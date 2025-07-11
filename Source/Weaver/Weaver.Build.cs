@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Sakurasaki All Rights Reserved.
 
 using UnrealBuildTool;
 
@@ -14,6 +14,7 @@ public class Weaver : ModuleRules
 			"CoreUObject",
 			"Engine",
 			"InputCore",
+			"AnimGraphRuntime",
 			"GameplayAbilities",
 			"GameplayTags",
 			"GameplayTasks",
