@@ -14,6 +14,7 @@ public class Weaver : ModuleRules
 			"CoreUObject",
 			"Engine",
 			"InputCore",
+			"AIModule",
 			"AnimGraphRuntime",
 			"GameplayAbilities",
 			"GameplayTags",
