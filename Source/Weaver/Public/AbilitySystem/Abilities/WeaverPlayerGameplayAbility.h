@@ -19,10 +19,10 @@ class WEAVER_API UWeaverPlayerGameplayAbility : public UWeaverGameplayAbility
 
 public:
 	UFUNCTION(BlueprintPure, Category = "Weaver|Ability")
-	AWeaverPlayerCharacter* GetWeaverPlayerCharacterFromActorInfo();
+	AWeaverPlayerCharacter* GetPlayerCharacterFromActorInfo();
 
 	UFUNCTION(BlueprintPure, Category = "Weaver|Ability")
-	AWeaverPlayerController* GetWeaverPlayerControllerFromActorInfo();
+	AWeaverPlayerController* GetPlayerControllerFromActorInfo();
 	
 	UFUNCTION(BlueprintPure, Category = "Weaver|Ability")
 	UPlayerCombatComponent* GetPlayerCombatComponentFromActorInfo();

@@ -21,5 +21,5 @@ public:
 
 protected:
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category="AnimData|References")
-	AWeaverPlayerCharacter* OwningHeroCharacter;
+	AWeaverPlayerCharacter* OwningPlayerCharacter;
 };

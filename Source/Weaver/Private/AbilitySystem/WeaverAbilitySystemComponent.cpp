@@ -3,6 +3,9 @@
 
 #include "AbilitySystem/WeaverAbilitySystemComponent.h"
 
+#include "WeaverGameplayTags.h"
+#include "AbilitySystem/Abilities/WeaverPlayerGameplayAbility.h"
+
 void UWeaverAbilitySystemComponent::OnAbilityInputPressed(const FGameplayTag& InInputTag)
 {
 	if (!InInputTag.IsValid())
@@ -20,7 +23,7 @@ void UWeaverAbilitySystemComponent::OnAbilityInputPressed(const FGameplayTag& In
 
 void UWeaverAbilitySystemComponent::OnAbilityInputReleased(const FGameplayTag& InInputTag)
 {
-	if (!InInputTag.IsValid())
+	if (!InInputTag.IsValid() || !InInputTag.MatchesTag(WeaverGameplayTags::InputTag_MustBeHeld))
 	{
 		return;
 	}
@@ -32,6 +35,56 @@ void UWeaverAbilitySystemComponent::OnAbilityInputReleased(const FGameplayTag& I
 			CancelAbilityHandle(AbilitySpec.Handle);
 		}
 	}
+}
+
+void UWeaverAbilitySystemComponent::GrantPlayerWeaponAbilities(const TArray<FWeaverPlayerAbilitySet>& InDefaultWeaponAbilities, const TArray<FWeaverPlayerSpecialAbilitySet>& InSpecialWeaponAbilities, int32 ApplyLevel, TArray<FGameplayAbilitySpecHandle>& OutGrantedAbilitySpecHandles)
+{
+	if (InDefaultWeaponAbilities.IsEmpty())
+	{
+		return;
+	}
+
+	for (const FWeaverPlayerAbilitySet& AbilitySet : InDefaultWeaponAbilities)
+	{
+		if (!AbilitySet.IsValid()) continue;
+		
+		FGameplayAbilitySpec AbilitySpec(AbilitySet.AbilityToGrant->GetDefaultObject<UWeaverGameplayAbility>());
+		AbilitySpec.SourceObject = GetAvatarActor();
+		AbilitySpec.Level = ApplyLevel;
+		AbilitySpec.GetDynamicSpecSourceTags().AddTag(AbilitySet.InputTag);
+
+		OutGrantedAbilitySpecHandles.AddUnique(GiveAbility(AbilitySpec));
+	}
+
+	for (const FWeaverPlayerSpecialAbilitySet& AbilitySet : InSpecialWeaponAbilities)
+	{
+		if (!AbilitySet.IsValid()) continue;
+		
+		FGameplayAbilitySpec AbilitySpec(AbilitySet.AbilityToGrant->GetDefaultObject<UWeaverGameplayAbility>());
+		AbilitySpec.SourceObject = GetAvatarActor();
+		AbilitySpec.Level = ApplyLevel;
+		AbilitySpec.GetDynamicSpecSourceTags().AddTag(AbilitySet.InputTag);
+
+		OutGrantedAbilitySpecHandles.AddUnique(GiveAbility(AbilitySpec));
+	}
+}
+
+void UWeaverAbilitySystemComponent::RemoveGrantedPlayerWeaponAbilities(TArray<FGameplayAbilitySpecHandle>& InSpecHandlesToRemove)
+{
+	if (InSpecHandlesToRemove.IsEmpty())
+	{
+		return;
+	}
+
+	for (const FGameplayAbilitySpecHandle& SpecHandle : InSpecHandlesToRemove)
+	{
+		if (SpecHandle.IsValid())
+		{
+			ClearAbility(SpecHandle);
+		}
+	}
+
+	InSpecHandlesToRemove.Empty();
 }
 
 bool UWeaverAbilitySystemComponent::TryActivateAbilityByTag(FGameplayTag AbilityTagToActivate)

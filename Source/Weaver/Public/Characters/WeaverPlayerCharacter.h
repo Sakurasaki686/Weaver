@@ -12,6 +12,7 @@ class UDataAsset_InputConfig;
 class UCameraComponent;
 class USpringArmComponent;
 class UPlayerCombatComponent;
+
 /**
  * 
  */
@@ -30,7 +31,7 @@ public:
 	//~ Begin IPawnUIInterface Interface.
 	// ...
 	//~ End IPawnUIInterface Interface
-
+	
 protected:
 	//~ Begin APawn Interface.
 	virtual void PossessedBy(AController* NewController) override;
@@ -64,6 +65,8 @@ private:
 
 	void Input_Move(const FInputActionValue& InputActionValue);
 	void Input_Look(const FInputActionValue& InputActionValue);
+	void Input_Jump(const FInputActionValue& InputActionValue);
+	void Input_ToggleGait(const FInputActionValue& InputActionValue);
 	
 	void Input_SwitchTargetTriggered(const FInputActionValue& InputActionValue);
 	void Input_SwitchTargetCompleted(const FInputActionValue& InputActionValue);
@@ -74,6 +77,8 @@ private:
 	void Input_AbilityInputReleased(FGameplayTag InInputTag);
 
 #pragma endregion
+
+	EWeaverCharacterGait CurrentGait;
 
 public:
 	FORCEINLINE UPlayerCombatComponent* GetPlayerCombatComponent() const { return PlayerCombatComponent; }

@@ -7,7 +7,7 @@
 #include "Characters/WeaverPlayerCharacter.h"
 #include "Controllers/WeaverPlayerController.h"
 
-AWeaverPlayerCharacter* UWeaverPlayerGameplayAbility::GetWeaverPlayerCharacterFromActorInfo()
+AWeaverPlayerCharacter* UWeaverPlayerGameplayAbility::GetPlayerCharacterFromActorInfo()
 {
 	if (!CachedWeaverPlayerCharacter.IsValid())
 	{
@@ -17,7 +17,7 @@ AWeaverPlayerCharacter* UWeaverPlayerGameplayAbility::GetWeaverPlayerCharacterFr
 	return CachedWeaverPlayerCharacter.IsValid() ? CachedWeaverPlayerCharacter.Get() : nullptr;
 }
 
-AWeaverPlayerController* UWeaverPlayerGameplayAbility::GetWeaverPlayerControllerFromActorInfo()
+AWeaverPlayerController* UWeaverPlayerGameplayAbility::GetPlayerControllerFromActorInfo()
 {
 	if (!CachedWeaverPlayerController.IsValid())
 	{
@@ -29,7 +29,7 @@ AWeaverPlayerController* UWeaverPlayerGameplayAbility::GetWeaverPlayerController
 
 UPlayerCombatComponent* UWeaverPlayerGameplayAbility::GetPlayerCombatComponentFromActorInfo()
 {
-	return GetWeaverPlayerCharacterFromActorInfo()->GetPlayerCombatComponent();
+	return GetPlayerCharacterFromActorInfo()->GetPlayerCombatComponent();
 }
 
 FGameplayEffectSpecHandle UWeaverPlayerGameplayAbility::MakePlayerDamageEffectSpecHandle(TSubclassOf<UGameplayEffect> EffectClass, float InWeaponBaseDamage, FGameplayTag InCurrentAttackTypeTag, int32 InUsedComboCount)

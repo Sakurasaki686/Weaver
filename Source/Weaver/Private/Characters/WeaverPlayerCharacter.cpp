@@ -11,6 +11,7 @@
 #include "Components/Combat/PlayerCombatComponent.h"
 #include "Components/Input/WeaverInputComponent.h"
 #include "DataAssets/Input/DataAsset_InputConfig.h"
+#include "DataAssets/StartUpData/DataAsset_StartUpDataBase.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 
@@ -38,6 +39,8 @@ AWeaverPlayerCharacter::AWeaverPlayerCharacter()
 	GetCharacterMovement()->BrakingDecelerationWalking = 2000.f;
 
 	PlayerCombatComponent = CreateDefaultSubobject<UPlayerCombatComponent>(TEXT("PlayerCombatComponent"));
+
+	CurrentGait = CharacterDefaultGait;
 }
 
 void AWeaverPlayerCharacter::BeginPlay()
@@ -48,6 +51,14 @@ void AWeaverPlayerCharacter::BeginPlay()
 void AWeaverPlayerCharacter::PossessedBy(AController* NewController)
 {
 	Super::PossessedBy(NewController);
+
+	if (!CharacterStartUpData.IsNull())
+	{
+		if (UDataAsset_StartUpDataBase* LoadedData = CharacterStartUpData.LoadSynchronous())
+		{
+			LoadedData->GiveToAbilitySystemComponent(WeaverAbilitySystemComponent);
+		}
+	}
 }
 
 UPawnCombatComponent* AWeaverPlayerCharacter::GetPawnCombatComponent() const
@@ -71,6 +82,8 @@ void AWeaverPlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerIn
 
 	WeaverInputComponent->BindNativeInputAction(InputConfigDataAsset, WeaverGameplayTags::InputTag_Move, ETriggerEvent::Triggered, this, &ThisClass::Input_Move);
 	WeaverInputComponent->BindNativeInputAction(InputConfigDataAsset, WeaverGameplayTags::InputTag_Look, ETriggerEvent::Triggered, this, &ThisClass::Input_Look);
+	WeaverInputComponent->BindNativeInputAction(InputConfigDataAsset, WeaverGameplayTags::InputTag_Jump, ETriggerEvent::Started, this, &ThisClass::Input_Jump);
+	WeaverInputComponent->BindNativeInputAction(InputConfigDataAsset, WeaverGameplayTags::InputTag_ToggleGait, ETriggerEvent::Started, this, &ThisClass::Input_ToggleGait);
 
 	// WeaverInputComponent->BindNativeInputAction(InputConfigDataAsset, WeaverGameplayTags::InputTag_SwitchTarget, ETriggerEvent::Triggered, this, &ThisClass::Input_SwitchTargetTriggered);
 	// WeaverInputComponent->BindNativeInputAction(InputConfigDataAsset, WeaverGameplayTags::InputTag_SwitchTarget, ETriggerEvent::Completed, this, &ThisClass::Input_SwitchTargetCompleted);
@@ -82,6 +95,11 @@ void AWeaverPlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerIn
 
 void AWeaverPlayerCharacter::Input_Move(const FInputActionValue& InputActionValue)
 {
+	if (GetWeaverAbilitySystemComponent()->HasMatchingGameplayTag(WeaverGameplayTags::InputTag_InputBlocked_Movement))
+	{
+		return;
+	}
+	
 	const FVector2D MovementVector = InputActionValue.Get<FVector2D>();
 
 	const FRotator MovementRotation(0.f, Controller->GetControlRotation().Yaw, 0.f);
@@ -113,6 +131,28 @@ void AWeaverPlayerCharacter::Input_Look(const FInputActionValue& InputActionValu
 	if (LookAxisVector.Y != 0.f)
 	{
 		AddControllerPitchInput(LookAxisVector.Y);
+	}
+}
+
+void AWeaverPlayerCharacter::Input_Jump(const FInputActionValue& InputActionValue)
+{
+	Jump();
+}
+
+void AWeaverPlayerCharacter::Input_ToggleGait(const FInputActionValue& InputActionValue)
+{
+	switch (CurrentGait)
+	{
+	case EWeaverCharacterGait::Run:
+		CurrentGait = EWeaverCharacterGait::Walk;
+		GetCharacterMovement()->MaxWalkSpeed = MaxWalSpeed;
+		break;
+	case EWeaverCharacterGait::Walk:
+		CurrentGait = EWeaverCharacterGait::Run;
+		GetCharacterMovement()->MaxWalkSpeed = MaxRunSpeed;
+		break;
+	default:
+		break;
 	}
 }
 

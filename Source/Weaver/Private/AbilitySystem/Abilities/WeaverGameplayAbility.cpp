@@ -82,7 +82,7 @@ void UWeaverGameplayAbility::ApplyGameplayEffectSpecHandleToHitTargetResults(con
 			//
 			// 		UAbilitySystemBlueprintLibrary::SendGameplayEventToActor(
 			// 			HitPawn,
-			// 			WarriorGameplayTags::Shared_Event_HitReact,
+			// 			WeaverGameplayTags::Shared_Event_HitReact,
 			// 			Data
 			// 		);
 			// 	}

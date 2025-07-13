@@ -42,3 +42,10 @@ enum class EWeaverInputMode : uint8
 	GameOnly,
 	UIOnly
 };
+
+UENUM()
+enum class EWeaverCharacterGait : uint8
+{
+	Walk,
+	Run
+};

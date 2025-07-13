@@ -11,7 +11,7 @@ void UWeaverPlayerAnimInstance::NativeInitializeAnimation()
 
 	if (OwningCharacter)
 	{
-		OwningHeroCharacter = Cast<AWeaverPlayerCharacter>(OwningCharacter);
+		OwningPlayerCharacter = Cast<AWeaverPlayerCharacter>(OwningCharacter);
 	}
 }
 
