@@ -17,19 +17,23 @@ namespace WeaverGameplayTags
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(InputTag_Roll);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(InputTag_BasicAttack_Rod);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(InputTag_PowerAttack_Rod);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(InputTag_ToggleTuner);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(InputTag_ToggleElement);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(InputTag_ToggleEffect);
 	
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(InputTag_MustBeHeld);
-	
-	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(InputTag_InputBlocked);
-	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(InputTag_InputBlocked_Movement);
 	
 	/** Player Tags **/
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Ability_Equip_Rod);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Ability_Unequip_Rod);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Ability_Jump);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Ability_Dodge);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Ability_Roll);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Ability_Attack_BasicAttack_Rod);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Ability_Attack_PowerAttack_Rod);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Ability_ToggleAffix_Tuner);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Ability_ToggleAffix_Element);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Ability_ToggleAffix_Effect);
 	
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Weapon_Rod);
 
@@ -38,6 +42,12 @@ namespace WeaverGameplayTags
 	
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_State_Invincible);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_State_InAir);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_State_InputBlocked);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_State_InputBlocked_Movement);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_State_InputBlocked_Jump);
+	
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Cooldown_Dodge);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Cooldown_Roll);
 
 	/** Enemy Tags **/
 
@@ -54,4 +64,22 @@ namespace WeaverGameplayTags
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Status_HitReact_Back);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Status_HitReact_Left);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Status_HitReact_Right);
+	
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Tuner_Focus);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Tuner_Diverge);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Tuner_Aegis);
+	
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Element_None);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Element_Fire);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Element_Frost);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Element_Lightning);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Element_Poison);
+	
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Effect_None);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Effect_Split);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Effect_Homing);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Effect_Pierce);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Effect_Ricochet);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Effect_Lifesteal);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Effect_DelayedDetonation);
 }

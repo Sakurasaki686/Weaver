@@ -65,7 +65,6 @@ private:
 
 	void Input_Move(const FInputActionValue& InputActionValue);
 	void Input_Look(const FInputActionValue& InputActionValue);
-	void Input_Jump(const FInputActionValue& InputActionValue);
 	void Input_ToggleGait(const FInputActionValue& InputActionValue);
 	
 	void Input_SwitchTargetTriggered(const FInputActionValue& InputActionValue);
@@ -78,6 +77,14 @@ private:
 
 #pragma endregion
 
+public:
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "PlayerMontages");
+	UAnimMontage* UnarmedDoubleJumpMontage;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "PlayerMontages");
+	UAnimMontage* ArmedDoubleJumpMontage;
+
+private:
 	EWeaverCharacterGait CurrentGait;
 
 public:

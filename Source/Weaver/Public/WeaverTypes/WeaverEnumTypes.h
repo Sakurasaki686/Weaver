@@ -49,3 +49,18 @@ enum class EWeaverCharacterGait : uint8
 	Walk,
 	Run
 };
+
+UENUM(BlueprintType)
+enum class EWeaverAffix : uint8
+{
+	Tuner,
+	Element,
+	Effect
+};
+
+UENUM(BlueprintType)
+enum class EWeaverEffectTriggerPhase : uint8
+{
+	OnCast,
+	OnSpawn
+};

@@ -40,6 +40,7 @@ AWeaverPlayerCharacter::AWeaverPlayerCharacter()
 
 	PlayerCombatComponent = CreateDefaultSubobject<UPlayerCombatComponent>(TEXT("PlayerCombatComponent"));
 
+	JumpMaxCount = 2;
 	CurrentGait = CharacterDefaultGait;
 }
 
@@ -82,7 +83,6 @@ void AWeaverPlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerIn
 
 	WeaverInputComponent->BindNativeInputAction(InputConfigDataAsset, WeaverGameplayTags::InputTag_Move, ETriggerEvent::Triggered, this, &ThisClass::Input_Move);
 	WeaverInputComponent->BindNativeInputAction(InputConfigDataAsset, WeaverGameplayTags::InputTag_Look, ETriggerEvent::Triggered, this, &ThisClass::Input_Look);
-	WeaverInputComponent->BindNativeInputAction(InputConfigDataAsset, WeaverGameplayTags::InputTag_Jump, ETriggerEvent::Started, this, &ThisClass::Input_Jump);
 	WeaverInputComponent->BindNativeInputAction(InputConfigDataAsset, WeaverGameplayTags::InputTag_ToggleGait, ETriggerEvent::Started, this, &ThisClass::Input_ToggleGait);
 
 	// WeaverInputComponent->BindNativeInputAction(InputConfigDataAsset, WeaverGameplayTags::InputTag_SwitchTarget, ETriggerEvent::Triggered, this, &ThisClass::Input_SwitchTargetTriggered);
@@ -95,7 +95,7 @@ void AWeaverPlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerIn
 
 void AWeaverPlayerCharacter::Input_Move(const FInputActionValue& InputActionValue)
 {
-	if (GetWeaverAbilitySystemComponent()->HasMatchingGameplayTag(WeaverGameplayTags::InputTag_InputBlocked_Movement))
+	if (GetWeaverAbilitySystemComponent()->HasMatchingGameplayTag(WeaverGameplayTags::Player_State_InputBlocked_Movement))
 	{
 		return;
 	}
@@ -132,11 +132,6 @@ void AWeaverPlayerCharacter::Input_Look(const FInputActionValue& InputActionValu
 	{
 		AddControllerPitchInput(LookAxisVector.Y);
 	}
-}
-
-void AWeaverPlayerCharacter::Input_Jump(const FInputActionValue& InputActionValue)
-{
-	Jump();
 }
 
 void AWeaverPlayerCharacter::Input_ToggleGait(const FInputActionValue& InputActionValue)

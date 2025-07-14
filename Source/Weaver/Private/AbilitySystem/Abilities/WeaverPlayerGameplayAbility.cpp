@@ -46,13 +46,13 @@ FGameplayEffectSpecHandle UWeaverPlayerGameplayAbility::MakePlayerDamageEffectSp
 	// 	GetAbilityLevel(),
 	// 	ContextHandle
 	// );
-	//
-	// EffectSpecHandle.Data->SetSetByCallerMagnitude(
-	// 	WeaverGameplayTags::Shared_SetByCaller_BaseDamage,
-	// 	InWeaponBaseDamage
-	// );
-	//
-	// if (InCurrentAttackTypeTag.IsValid())
+	//	//
+	//	// EffectSpecHandle.Data->SetSetByCallerMagnitude(
+	//	// 	WeaverGameplayTags::Shared_SetByCaller_BaseDamage,
+	//	// 	InWeaponBaseDamage
+	//	// );
+	//	//
+	//	// if (InCurrentAttackTypeTag.IsValid())
 	// {
 	// 	EffectSpecHandle.Data->SetSetByCallerMagnitude(InCurrentAttackTypeTag, InUsedComboCount);
 	// }
