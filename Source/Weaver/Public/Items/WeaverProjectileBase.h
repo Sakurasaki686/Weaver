@@ -8,6 +8,12 @@
 #include "GameFramework/Actor.h"
 #include "WeaverProjectileBase.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnProjectileSpawnSignature);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnProjectileHitSignature, AActor*, HitActor, const FHitResult&, HitResult);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnProjectileOverlapSignature, AActor*, OverlappedActor);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnProjectileDestroySignature);
+
+
 class UProjectileMovementComponent;
 class UNiagaraComponent;
 class UBoxComponent;
@@ -27,8 +33,30 @@ class WEAVER_API AWeaverProjectileBase : public AActor
 public:	
 	AWeaverProjectileBase();
 
+	UPROPERTY(BlueprintAssignable, Category = "Projectile|Events")
+	FOnProjectileSpawnSignature OnProjectileSpawn;
+
+	UPROPERTY(BlueprintAssignable, Category = "Projectile|Events")
+	FOnProjectileHitSignature OnProjectileHit;
+	
+	UPROPERTY(BlueprintAssignable, Category = "Projectile|Events")
+	FOnProjectileOverlapSignature OnProjectileOverlap;
+	
+	UPROPERTY(BlueprintAssignable, Category = "Projectile|Events")
+	FOnProjectileDestroySignature OnProjectileDestroy;
+
+	UPROPERTY(VisibleInstanceOnly, BlueprintReadWrite, Category = "Projectile|State")
+	FGameplayTag DamageTunerTag;
+
 protected:
 	virtual void BeginPlay() override;
+	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
+	
+	UFUNCTION()
+	virtual void HandleHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
+
+	UFUNCTION()
+	virtual void HandleOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = "Projectile")
 	UBoxComponent* ProjectileCollisionBox;
@@ -43,16 +71,19 @@ protected:
 	EProjectileDamagePolicy ProjectileDamagePolicy = EProjectileDamagePolicy::OnHit;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Projectile")
+	TSubclassOf<UGameplayEffect> BaseDamageEffectClass;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Projectile")
 	bool bDestroyOnHit = true;
 
 	UPROPERTY(BlueprintReadOnly, Category = "Projectile", meta = (ExposeOnSpawn = "true"))
 	FGameplayEffectSpecHandle ProjectileDamageEffectSpecHandle;
 
-	UFUNCTION()
-	virtual void OnProjectileHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
-
-	UFUNCTION()
-	virtual void OnProjectileBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+	// UFUNCTION(BlueprintNativeEvent)
+	// virtual void OnProjectileHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
+	
+	// UFUNCTION(BlueprintNativeEvent)
+	// virtual void OnProjectileBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 
 	UFUNCTION(BlueprintImplementableEvent, meta = (DisplayName = "On Spawn Projectile Hit FX"))
 	void BP_OnSpawnProjectileHitFX(const FVector& HitLocation);

@@ -6,7 +6,7 @@
 #include "DataAssets/Affixes/DataAsset_AffixBase.h"
 #include "DataAsset_ElementBase.generated.h"
 
-class UWeaverEffectComponentBase;
+class UProjectileExtensionComponentBase;
 class UGameplayEffect;
 class AWeaverProjectileBase;
 /**
@@ -25,5 +25,5 @@ public:
 	TSubclassOf<UGameplayEffect> BaseDamageEffect;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Element")
-	TSubclassOf<UWeaverEffectComponentBase> ElementEffectComponentClass;
+	TSubclassOf<UProjectileExtensionComponentBase> ElementEffectComponentClass;
 };

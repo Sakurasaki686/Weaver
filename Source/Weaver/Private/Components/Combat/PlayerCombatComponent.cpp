@@ -9,6 +9,13 @@
 #include "Characters/WeaverPlayerCharacter.h"
 #include "Items/Weapons/WeaverPlayerWeapon.h"
 
+void UPlayerCombatComponent::BeginPlay()
+{
+	Super::BeginPlay();
+
+	SetSelectedTuner(SelectedTunerTag);
+}
+
 AWeaverPlayerWeapon* UPlayerCombatComponent::GetPlayerCarriedWeaponByTag(FGameplayTag InWeaponTag) const
 {
 	return Cast<AWeaverPlayerWeapon>(GetCharacterCarriedWeaponByTag(InWeaponTag));
@@ -34,7 +41,7 @@ void UPlayerCombatComponent::OnWeaponPulledFromTargetActor(AActor* InteractedAct
 	Super::OnWeaponPulledFromTargetActor(InteractedActor);
 }
 
-void UPlayerCombatComponent::SetSelectedTuner(const FGameplayTag& InTunerTag)
+void UPlayerCombatComponent::SetSelectedTuner(FGameplayTag InTunerTag)
 {
 	UWeaverAbilitySystemComponent* ASC = GetOwner<AWeaverPlayerCharacter>()->GetWeaverAbilitySystemComponent();
 	if (!ASC)

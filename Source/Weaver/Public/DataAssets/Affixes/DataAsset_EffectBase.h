@@ -7,7 +7,7 @@
 #include "WeaverTypes/WeaverEnumTypes.h"
 #include "DataAsset_EffectBase.generated.h"
 
-class UWeaverEffectComponentBase;
+class UProjectileExtensionComponentBase;
 /**
  * 
  */
@@ -18,8 +18,8 @@ class WEAVER_API UDataAsset_EffectBase : public UDataAsset_AffixBase
 
 public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Effect")
-	EWeaverEffectTriggerPhase TriggerPhase;
+	EWeaverEffectTriggerPhase TriggerPhase = EWeaverEffectTriggerPhase::OnSpawn;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Effect")
-	TSubclassOf<UWeaverEffectComponentBase> EffectComponentClass;
+	TSubclassOf<UProjectileExtensionComponentBase> EffectComponentClass;
 };

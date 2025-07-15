@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameplayTagContainer.h"
+#include "WeaverGameplayTags.h"
 #include "Components/Combat/PawnCombatComponent.h"
 #include "PlayerCombatComponent.generated.h"
 
@@ -21,6 +22,8 @@ class WEAVER_API UPlayerCombatComponent : public UPawnCombatComponent
 	GENERATED_BODY()
 
 public:
+	virtual void BeginPlay() override;
+	
 	UFUNCTION(BlueprintCallable, Category = "Weaver|Combat")
 	AWeaverPlayerWeapon* GetPlayerCarriedWeaponByTag(FGameplayTag InWeaponTag) const;
 
@@ -35,7 +38,7 @@ public:
 
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Weaver|Spell Alchemist")
-	FGameplayTag SelectedTunerTag;
+	FGameplayTag SelectedTunerTag = WeaverGameplayTags::Shared_Projectile_Affix_Tuner_Focus;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Weaver|Spell Alchemist")
 	TObjectPtr<UDataAsset_ElementBase> SelectedElement;
@@ -54,7 +57,7 @@ public:
 	UDataAsset_EffectBase* GetSelectedEffect() const { return SelectedEffect; }
 
 	UFUNCTION(BlueprintCallable, Category = "Weaver|Spell Alchemist")
-	void SetSelectedTuner(const FGameplayTag& InTunerTag);
+	void SetSelectedTuner(FGameplayTag InTunerTag);
 
 	UFUNCTION(BlueprintCallable, Category = "Weaver|Spell Alchemist")
 	void SetSelectedElement(UDataAsset_ElementBase* InElement);

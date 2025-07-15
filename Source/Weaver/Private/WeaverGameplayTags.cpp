@@ -21,6 +21,7 @@ namespace WeaverGameplayTags
 	UE_DEFINE_GAMEPLAY_TAG(InputTag_ToggleEffect, "InputTag.ToggleEffect");
 	
 	UE_DEFINE_GAMEPLAY_TAG(InputTag_MustBeHeld, "InputTag.MustBeHeld");
+	UE_DEFINE_GAMEPLAY_TAG(InputTag_MustBeHeld_BasicAegis, "InputTag.MustBeHeld.BasicAegis");
 
 	/** Player Tags **/
 	UE_DEFINE_GAMEPLAY_TAG(Player_Ability_Equip_Rod, "Player.Ability.Equip.Rod");
@@ -33,20 +34,26 @@ namespace WeaverGameplayTags
 	UE_DEFINE_GAMEPLAY_TAG(Player_Ability_ToggleAffix_Tuner, "Player.Ability.ToggleAffix.Tuner");
 	UE_DEFINE_GAMEPLAY_TAG(Player_Ability_ToggleAffix_Element, "Player.Ability.ToggleAffix.Element");
 	UE_DEFINE_GAMEPLAY_TAG(Player_Ability_ToggleAffix_Effect, "Player.Ability.ToggleAffix.Effect");
+	UE_DEFINE_GAMEPLAY_TAG(Player_Ability_HyperArmor, "Player.Ability.HyperArmor");
 	
 	UE_DEFINE_GAMEPLAY_TAG(Player_Weapon_Rod, "Player.Weapon.Rod");
 	
 	UE_DEFINE_GAMEPLAY_TAG(Player_Event_Equip_Rod, "Player.Event.Equip.Rod");
 	UE_DEFINE_GAMEPLAY_TAG(Player_Event_Unequip_Rod, "Player.Event.Unequip.Rod");
+	UE_DEFINE_GAMEPLAY_TAG(Player_Event_ActivateHyperArmor, "Player.Event.ActivateHyperArmor");
+	UE_DEFINE_GAMEPLAY_TAG(Player_Event_ApplyHyperArmorGE, "Player.Event.ApplyHyperArmorGE");
 	
 	UE_DEFINE_GAMEPLAY_TAG(Player_State_Invincible, "Player.State.Invincible");
 	UE_DEFINE_GAMEPLAY_TAG(Player_State_InAir, "Player.State.InAir");
+	UE_DEFINE_GAMEPLAY_TAG(Player_State_InputMustBeHeld, "Player.State.InputMustBeHeld");
 	UE_DEFINE_GAMEPLAY_TAG(Player_State_InputBlocked, "Player.State.InputBlocked");
 	UE_DEFINE_GAMEPLAY_TAG(Player_State_InputBlocked_Movement, "Player.State.InputBlocked.Movement");
 	UE_DEFINE_GAMEPLAY_TAG(Player_State_InputBlocked_Jump, "Player.State.InputBlocked.Jump");
+	UE_DEFINE_GAMEPLAY_TAG(Player_State_HyperArmor, "Player.State.HyperArmor");
 	
 	UE_DEFINE_GAMEPLAY_TAG(Player_Cooldown_Dodge, "Player.Cooldown.Dodge");
 	UE_DEFINE_GAMEPLAY_TAG(Player_Cooldown_Roll, "Player.Cooldown.Roll");
+	UE_DEFINE_GAMEPLAY_TAG(Player_Cooldown_HyperArmor, "Player.Cooldown.HyperArmor");
 
 	/** Enemy Tags **/
 

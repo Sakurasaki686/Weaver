@@ -3,6 +3,7 @@
 
 #include "AbilitySystem/WeaverAbilitySystemComponent.h"
 
+#include "WeaverDebugHelper.h"
 #include "WeaverGameplayTags.h"
 #include "AbilitySystem/Abilities/WeaverPlayerGameplayAbility.h"
 
@@ -23,9 +24,17 @@ void UWeaverAbilitySystemComponent::OnAbilityInputPressed(const FGameplayTag& In
 
 void UWeaverAbilitySystemComponent::OnAbilityInputReleased(const FGameplayTag& InInputTag)
 {
-	if (!InInputTag.IsValid() || !InInputTag.MatchesTag(WeaverGameplayTags::InputTag_MustBeHeld))
+	if (!InInputTag.IsValid())
 	{
 		return;
+	}
+
+	if (!HasMatchingGameplayTag(WeaverGameplayTags::Player_State_InputMustBeHeld))
+	{
+		if (!InInputTag.MatchesTag(WeaverGameplayTags::InputTag_MustBeHeld))
+		{
+			return;
+		}
 	}
 
 	for (const FGameplayAbilitySpec& AbilitySpec : GetActivatableAbilities())

@@ -8,6 +8,7 @@
 #include "WeaverGameInstance.h" 
 #include "WeaverGameplayTags.h"
 #include "AbilitySystem/WeaverAbilitySystemComponent.h"
+#include "Engine/Engine.h"
 #include "Interfaces/PawnCombatInterface.h"
 #include "Kismet/KismetMathLibrary.h"
 
