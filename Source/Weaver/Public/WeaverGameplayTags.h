@@ -51,6 +51,7 @@ namespace WeaverGameplayTags
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_State_InputBlocked_Movement);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_State_InputBlocked_Jump);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_State_HyperArmor);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_State_HyperArmor_Activating);
 	
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Cooldown_Dodge);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Cooldown_Roll);
@@ -84,6 +85,7 @@ namespace WeaverGameplayTags
 	
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Effect_None);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Effect_Split);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Effect_TripleShot);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Effect_Homing);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Effect_Pierce);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Effect_Ricochet);

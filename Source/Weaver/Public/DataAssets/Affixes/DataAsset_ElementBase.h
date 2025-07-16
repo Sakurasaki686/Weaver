@@ -12,7 +12,7 @@ class AWeaverProjectileBase;
 /**
  * 
  */
-UCLASS()
+UCLASS(BlueprintType)
 class WEAVER_API UDataAsset_ElementBase : public UDataAsset_AffixBase
 {
 	GENERATED_BODY()
@@ -23,7 +23,4 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Element")
 	TSubclassOf<UGameplayEffect> BaseDamageEffect;
-
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Element")
-	TSubclassOf<UProjectileExtensionComponentBase> ElementEffectComponentClass;
 };

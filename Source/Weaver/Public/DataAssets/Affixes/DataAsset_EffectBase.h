@@ -7,19 +7,23 @@
 #include "WeaverTypes/WeaverEnumTypes.h"
 #include "DataAsset_EffectBase.generated.h"
 
+class AWeaverSpellSpawnProxyBase;
 class UProjectileExtensionComponentBase;
 /**
  * 
  */
-UCLASS()
+UCLASS(BlueprintType)
 class WEAVER_API UDataAsset_EffectBase : public UDataAsset_AffixBase
 {
 	GENERATED_BODY()
 
 public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Effect")
-	EWeaverEffectTriggerPhase TriggerPhase = EWeaverEffectTriggerPhase::OnSpawn;
+	EWeaverEffectTriggerPhase TriggerPhase = EWeaverEffectTriggerPhase::AfterCast;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Effect")
 	TSubclassOf<UProjectileExtensionComponentBase> EffectComponentClass;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Effect", meta = (EditCondition = "TriggerPhase == EWeaverEffectTriggerPhase::OnCast"))
+	TSubclassOf<AWeaverSpellSpawnProxyBase> SpawnProxyClass;
 };

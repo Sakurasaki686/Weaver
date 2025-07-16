@@ -62,5 +62,5 @@ UENUM(BlueprintType)
 enum class EWeaverEffectTriggerPhase : uint8
 {
 	OnCast,
-	OnSpawn
+	AfterCast
 };

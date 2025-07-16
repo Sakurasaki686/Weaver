@@ -37,13 +37,13 @@ public:
 	virtual void OnWeaponPulledFromTargetActor(AActor* InteractedActor) override;
 
 protected:
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Weaver|Spell Alchemist")
+	UPROPERTY(VisibleAnywhere, Category = "Weaver|Spell Alchemist")
 	FGameplayTag SelectedTunerTag = WeaverGameplayTags::Shared_Projectile_Affix_Tuner_Focus;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Weaver|Spell Alchemist")
+	UPROPERTY(VisibleAnywhere, Category = "Weaver|Spell Alchemist")
 	TObjectPtr<UDataAsset_ElementBase> SelectedElement;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Weaver|Spell Alchemist")
+	UPROPERTY(VisibleAnywhere, Category = "Weaver|Spell Alchemist")
 	TObjectPtr<UDataAsset_EffectBase> SelectedEffect;
 
 public:

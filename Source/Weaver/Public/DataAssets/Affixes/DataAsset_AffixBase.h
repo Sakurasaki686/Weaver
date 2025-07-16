@@ -10,7 +10,7 @@
 /**
  * 
  */
-UCLASS()
+UCLASS(BlueprintType, Abstract)
 class WEAVER_API UDataAsset_AffixBase : public UDataAsset
 {
 	GENERATED_BODY()

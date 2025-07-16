@@ -20,11 +20,11 @@ public:
 protected:
 	virtual void BeginPlay() override;
 	
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Effect Component")
+	void InitializeComponentForProjectile();
+	
 	UPROPERTY(BlueprintReadOnly, Category = "Effect")
 	TObjectPtr<AWeaverProjectileBase> OwningProjectile;
-	
-	UFUNCTION(BlueprintNativeEvent, Category = "Effect|Events")
-	void OnOwnerProjectileSpawn();
 
 	UFUNCTION(BlueprintNativeEvent, Category = "Effect|Events")
 	void OnOwnerProjectileOverlap(AActor* OverlappedActor);

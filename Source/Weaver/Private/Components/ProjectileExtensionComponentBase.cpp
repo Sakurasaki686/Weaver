@@ -8,7 +8,6 @@
 UProjectileExtensionComponentBase::UProjectileExtensionComponentBase()
 {
 	PrimaryComponentTick.bCanEverTick = false;
-
 }
 
 void UProjectileExtensionComponentBase::BeginPlay()
@@ -19,14 +18,13 @@ void UProjectileExtensionComponentBase::BeginPlay()
 	
 	if (OwningProjectile)
 	{
-		OwningProjectile->OnProjectileSpawn.AddDynamic(this, &ThisClass::OnOwnerProjectileSpawn);
 		OwningProjectile->OnProjectileOverlap.AddDynamic(this, &ThisClass::OnOwnerProjectileOverlap);
 		OwningProjectile->OnProjectileHit.AddDynamic(this, &ThisClass::OnOwnerProjectileHit);
 		OwningProjectile->OnProjectileDestroy.AddDynamic(this, &ThisClass::OnOwnerProjectileDestroy);
 	}
 }
 
-void UProjectileExtensionComponentBase::OnOwnerProjectileSpawn_Implementation()
+void UProjectileExtensionComponentBase::InitializeComponentForProjectile_Implementation()
 {
 }
 

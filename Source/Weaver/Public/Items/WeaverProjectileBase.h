@@ -8,12 +8,11 @@
 #include "GameFramework/Actor.h"
 #include "WeaverProjectileBase.generated.h"
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnProjectileSpawnSignature);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnProjectileHitSignature, AActor*, HitActor, const FHitResult&, HitResult);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnProjectileOverlapSignature, AActor*, OverlappedActor);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnProjectileDestroySignature);
 
-
+class UProjectileExtensionComponentBase;
 class UProjectileMovementComponent;
 class UNiagaraComponent;
 class UBoxComponent;
@@ -32,9 +31,6 @@ class WEAVER_API AWeaverProjectileBase : public AActor
 	
 public:	
 	AWeaverProjectileBase();
-
-	UPROPERTY(BlueprintAssignable, Category = "Projectile|Events")
-	FOnProjectileSpawnSignature OnProjectileSpawn;
 
 	UPROPERTY(BlueprintAssignable, Category = "Projectile|Events")
 	FOnProjectileHitSignature OnProjectileHit;

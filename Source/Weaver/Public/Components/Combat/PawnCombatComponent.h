@@ -41,7 +41,7 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Weaver|Combat")
 	void ToggleWeaponCollision(bool bShouldEnable, EToggleDamageType ToggleDamageType = EToggleDamageType::CurrentEquippedWeapon);
 
-	virtual void OnHitTargetActor(AActor* HitActor);w
+	virtual void OnHitTargetActor(AActor* HitActor);
 	virtual void OnWeaponPulledFromTargetActor(AActor* InteractedActor);
 
 protected:

@@ -9,6 +9,7 @@
 #include "NiagaraComponent.h"
 #include "WeaverFunctionLibrary.h"
 #include "WeaverGameplayTags.h"
+#include "Components/ProjectileExtensionComponentBase.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 
 AWeaverProjectileBase::AWeaverProjectileBase()
@@ -40,8 +41,6 @@ void AWeaverProjectileBase::BeginPlay()
 
 	ProjectileCollisionBox->OnComponentHit.AddUniqueDynamic(this, &ThisClass::HandleHit);
 	ProjectileCollisionBox->OnComponentBeginOverlap.AddUniqueDynamic(this, &ThisClass::HandleOverlap);
-
-	OnProjectileSpawn.Broadcast();
 
 	// if (ProjectileDamagePolicy == EProjectileDamagePolicy::OnBeginOverlap)
 	// {
