@@ -84,7 +84,7 @@ namespace WeaverGameplayTags
 	
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Effect_None, "Shared.Projectile.Affix.Effect.None");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Effect_Split, "Shared.Projectile.Affix.Effect.Split");
-	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Effect_TripleShot, "Shared.Projectile.Affix.Effect.TripleShot");
+	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Effect_MultiShot, "Shared.Projectile.Affix.Effect.MultiShot");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Effect_Homing, "Shared.Projectile.Affix.Effect.Homing");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Effect_Pierce, "Shared.Projectile.Affix.Effect.Pierce");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Effect_Ricochet, "Shared.Projectile.Affix.Effect.Ricochet");
