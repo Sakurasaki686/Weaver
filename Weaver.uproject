@@ -41,6 +41,10 @@
 		{
 			"Name": "GameplayAbilities",
 			"Enabled": true
+		},
+		{
+			"Name": "LandscapePatch",
+			"Enabled": true
 		}
 	]
 }
