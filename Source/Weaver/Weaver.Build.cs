@@ -22,7 +22,9 @@ public class Weaver : ModuleRules
 			"MotionWarping",
 			"Niagara",
 			"NavigationSystem",
-			"MoviePlayer"
+			"MoviePlayer",
+			"GeometryCore",
+			"GeometryFramework"
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[] {  });

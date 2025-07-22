@@ -77,13 +77,6 @@ private:
 
 #pragma endregion
 
-public:
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "PlayerMontages");
-	UAnimMontage* UnarmedDoubleJumpMontage;
-
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "PlayerMontages");
-	UAnimMontage* ArmedDoubleJumpMontage;
-
 private:
 	EWeaverCharacterGait CurrentGait;
 
