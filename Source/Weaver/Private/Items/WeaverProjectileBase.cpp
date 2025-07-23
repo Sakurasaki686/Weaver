@@ -31,7 +31,7 @@ AWeaverProjectileBase::AWeaverProjectileBase()
 	ProjectileMovementComp->MaxSpeed = 900.f;
 	ProjectileMovementComp->Velocity = FVector(1.f, 0.f, 0.f);
 	ProjectileMovementComp->ProjectileGravityScale = 0.f;
-
+	
 	InitialLifeSpan = 4.f;
 }
 
