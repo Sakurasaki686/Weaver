@@ -62,6 +62,7 @@ namespace WeaverGameplayTags
 	UE_DEFINE_GAMEPLAY_TAG(Player_Cooldown_HyperArmor, "Player.Cooldown.HyperArmor");
 
 	/** Enemy Tags **/
+	UE_DEFINE_GAMEPLAY_TAG(Enemy_Ability_BasicAttack, "Enemy.Ability.BasicAttack");
 
 
 	/** Shared Tags **/

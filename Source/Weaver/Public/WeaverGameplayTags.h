@@ -63,6 +63,7 @@ namespace WeaverGameplayTags
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Cooldown_HyperArmor);
 
 	/** Enemy Tags **/
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Enemy_Ability_BasicAttack);
 
 
 	/** Shared Tags **/
