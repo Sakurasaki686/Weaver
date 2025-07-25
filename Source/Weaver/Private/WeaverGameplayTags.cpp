@@ -53,6 +53,7 @@ namespace WeaverGameplayTags
 	UE_DEFINE_GAMEPLAY_TAG(Player_State_InputBlocked_Jump, "Player.State.InputBlocked.Jump");
 	UE_DEFINE_GAMEPLAY_TAG(Player_State_HyperArmor, "Player.State.HyperArmor");
 	UE_DEFINE_GAMEPLAY_TAG(Player_State_HyperArmor_Activating, "Player.State.HyperArmor.Activating");
+	UE_DEFINE_GAMEPLAY_TAG(Player_State_ToggleEquipping, "Player.State.ToggleEquipping");
 	
 	UE_DEFINE_GAMEPLAY_TAG(Player_SculptMode_Build, "Player.SculptMode.Build");
 	UE_DEFINE_GAMEPLAY_TAG(Player_SculptMode_Dig, "Player.SculptMode.Dig");
@@ -70,6 +71,7 @@ namespace WeaverGameplayTags
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Ability_Death, "Shared.Ability.Death");
 	
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Event_HitReact, "Shared.Event.HitReact");
+	UE_DEFINE_GAMEPLAY_TAG(Shared_Event_ProjectileHitTarget, "Shared.Event.ProjectileHitTarget");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Event_InterruptCurrentMontage, "Shared.Event.InterruptCurrentMontage");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Event_SpawnProjectile, "Shared.Event.SpawnProjectile");
 	
@@ -77,6 +79,10 @@ namespace WeaverGameplayTags
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Status_HitReact_Back, "Shared.Status.HitReact.Back");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Status_HitReact_Left, "Shared.Status.HitReact.Left");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Status_HitReact_Right, "Shared.Status.HitReact.Right");
+	UE_DEFINE_GAMEPLAY_TAG(Shared_Status_Dead, "Shared.Status.Dead");
+	UE_DEFINE_GAMEPLAY_TAG(Shared_Status_Immunity_HitReact, "Shared.Status.Immunity.HitReact");
+	
+	UE_DEFINE_GAMEPLAY_TAG(Shared_SetByCaller_BaseDamage, "Shared.SetByCaller.BaseDamage");
 	
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Tuner_Focus, "Shared.Projectile.Affix.Tuner.Focus");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Tuner_Diverge, "Shared.Projectile.Affix.Tuner.Diverge");

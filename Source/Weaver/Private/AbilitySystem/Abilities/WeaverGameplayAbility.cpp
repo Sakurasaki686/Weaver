@@ -6,6 +6,8 @@
 #include "AbilitySystemComponent.h"
 #include "WeaverFunctionLibrary.h"
 #include "AbilitySystemBlueprintLibrary.h"
+#include "WeaverDebugHelper.h"
+#include "WeaverGameplayTags.h"
 #include "AbilitySystem/WeaverAbilitySystemComponent.h"
 #include "Components/Combat/PawnCombatComponent.h"
 
@@ -89,6 +91,29 @@ void UWeaverGameplayAbility::ApplyGameplayEffectSpecHandleToHitTargetResults(con
 			// }
 		}
 	}
+}
+
+FGameplayEffectSpecHandle UWeaverGameplayAbility::MakeDamageEffectSpecHandle(TSubclassOf<UGameplayEffect> EffectClass, const FScalableFloat& InBaseDamage)
+{
+	check(EffectClass);
+
+	FGameplayEffectContextHandle ContextHandle = GetWeaverAbilitySystemComponentFromActorInfo()->MakeEffectContext();
+	ContextHandle.SetAbility(this);
+	ContextHandle.AddSourceObject(GetAvatarActorFromActorInfo());
+	ContextHandle.AddInstigator(GetAvatarActorFromActorInfo(), GetAvatarActorFromActorInfo());
+
+	FGameplayEffectSpecHandle EffectSpecHandle = GetWeaverAbilitySystemComponentFromActorInfo()->MakeOutgoingSpec(
+		EffectClass,
+		GetAbilityLevel(),
+		ContextHandle
+	);
+
+	EffectSpecHandle.Data->SetSetByCallerMagnitude(
+		WeaverGameplayTags::Shared_SetByCaller_BaseDamage,
+		InBaseDamage.GetValueAtLevel(GetAbilityLevel())
+	);
+
+	return EffectSpecHandle;
 }
 
 FActiveGameplayEffectHandle UWeaverGameplayAbility::BP_ApplyGameplayEffectSpecHandleToTarget(AActor* TargetActor, const FGameplayEffectSpecHandle& InSpecHandle, EWeaverSuccessType& OutSuccessType)

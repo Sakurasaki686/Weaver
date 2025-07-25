@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "ScalableFloat.h"
 #include "DataAssets/Affixes/DataAsset_AffixBase.h"
 #include "DataAsset_ElementBase.generated.h"
 
@@ -20,6 +21,9 @@ class WEAVER_API UDataAsset_ElementBase : public UDataAsset_AffixBase
 public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Element")
 	TSubclassOf<AWeaverProjectileBase> ProjectileClass;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Element")
+	FScalableFloat BaseDamage;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Element")
 	TSubclassOf<UGameplayEffect> BaseDamageEffect;

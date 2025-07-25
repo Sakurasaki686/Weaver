@@ -95,13 +95,15 @@ void AWeaverPlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerIn
 
 void AWeaverPlayerCharacter::Input_Move(const FInputActionValue& InputActionValue)
 {
+	const FVector2D MovementVector = InputActionValue.Get<FVector2D>();
+	
+	CachedMovementInput = FVector(MovementVector.Y, MovementVector.X, 0.0f);
+	
 	if (GetWeaverAbilitySystemComponent()->HasMatchingGameplayTag(WeaverGameplayTags::Player_State_InputBlocked_Movement))
 	{
 		return;
 	}
 	
-	const FVector2D MovementVector = InputActionValue.Get<FVector2D>();
-
 	const FRotator MovementRotation(0.f, Controller->GetControlRotation().Yaw, 0.f);
 
 	if (MovementVector.Y != 0.f)

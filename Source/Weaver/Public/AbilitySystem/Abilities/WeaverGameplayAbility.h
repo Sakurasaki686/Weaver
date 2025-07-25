@@ -47,4 +47,7 @@ protected:
 
 	UFUNCTION(BlueprintCallable, Category = "Weaver|Ability")
 	void ApplyGameplayEffectSpecHandleToHitTargetResults(const FGameplayEffectSpecHandle& InSpecHandle, const TArray<FHitResult>& InHitResults);
+
+	UFUNCTION(BlueprintPure, Category = "Weaver|Ability")
+	FGameplayEffectSpecHandle MakeDamageEffectSpecHandle(TSubclassOf<UGameplayEffect> EffectClass, const FScalableFloat& InBaseDamage);
 };
