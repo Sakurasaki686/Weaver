@@ -29,7 +29,8 @@ public:
 	//~ End IPawnCombatInterface Interface
 	
 	//~ Begin IPawnUIInterface Interface.
-	// ...
+	virtual UPawnUIComponent* GetPawnUIComponent() const override;
+	virtual UPlayerUIComponent* GetPlayerUIComponent() const override;
 	//~ End IPawnUIInterface Interface
 	
 protected:
@@ -52,6 +53,9 @@ private:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Combat", meta = (AllowPrivateAccess = "true"))
 	UPlayerCombatComponent* PlayerCombatComponent;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UI", meta = (AllowPrivateAccess = "true"))
+	UPlayerUIComponent* PlayerUIComponent;
 
 #pragma endregion
 
@@ -81,9 +85,6 @@ private:
 public:
 	UFUNCTION(BlueprintCallable, Category = "CharacterData|Locomotion")
 	FVector GetMovementInput() const { return CachedMovementInput; }
-
-private:
-	EWeaverCharacterGait CurrentGait;
 
 public:
 	FORCEINLINE UPlayerCombatComponent* GetPlayerCombatComponent() const { return PlayerCombatComponent; }

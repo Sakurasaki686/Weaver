@@ -26,5 +26,5 @@ public:
 	FScalableFloat BaseDamage;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Element")
-	TSubclassOf<UGameplayEffect> BaseDamageEffect;
+	TSubclassOf<UGameplayEffect> ElementEffect;
 };

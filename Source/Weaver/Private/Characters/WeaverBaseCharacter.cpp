@@ -19,17 +19,43 @@ AWeaverBaseCharacter::AWeaverBaseCharacter()
 	WeaverAbilitySystemComponent = CreateDefaultSubobject<UWeaverAbilitySystemComponent>(TEXT("WeaverAbilitySystemComponent"));
 	WeaverAttributeSet = CreateDefaultSubobject<UWeaverAttributeSet>(TEXT("WeaverAttributeSet"));
 	MotionWarpingComponent = CreateDefaultSubobject<UMotionWarpingComponent>(TEXT("MotionWarpingComponent"));
+	
+	CurrentGait = CharacterDefaultGait;
 
-	switch (CharacterDefaultGait)
+	switch (CurrentGait)
 	{
 	case EWeaverCharacterGait::Run:
-		GetCharacterMovement()->MaxWalkSpeed = MaxRunSpeed;
+		GetCharacterMovement()->MaxWalkSpeed = WeaverAttributeSet->GetMaxRunSpeed() * WeaverAttributeSet->GetMovementSpeedMultiplier();
 		break;
 	case EWeaverCharacterGait::Walk:
-		GetCharacterMovement()->MaxWalkSpeed = MaxWalSpeed;
+		GetCharacterMovement()->MaxWalkSpeed = WeaverAttributeSet->GetMaxWalkSpeed() * WeaverAttributeSet->GetMovementSpeedMultiplier();
 		break;
 	default:
 		break;
+	}
+}
+
+void AWeaverBaseCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+
+	WeaverAbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(WeaverAttributeSet->GetMovementSpeedMultiplierAttribute()).AddUObject(this, &ThisClass::OnMovementAttributesChanged);
+	WeaverAbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(WeaverAttributeSet->GetMaxRunSpeedAttribute()).AddUObject(this, &ThisClass::OnMovementAttributesChanged);
+	WeaverAbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(WeaverAttributeSet->GetMaxWalkSpeedAttribute()).AddUObject(this, &ThisClass::OnMovementAttributesChanged);
+	
+	GetCharacterMovement()->MaxWalkSpeed = WeaverAttributeSet->GetMaxRunSpeed() * WeaverAttributeSet->GetMovementSpeedMultiplier();
+	GetMesh()->GlobalAnimRateScale = WeaverAttributeSet->GetMovementSpeedMultiplier();
+}
+
+void AWeaverBaseCharacter::PossessedBy(AController* NewController)
+{
+	Super::PossessedBy(NewController);
+
+	if (WeaverAbilitySystemComponent)
+	{
+		WeaverAbilitySystemComponent->InitAbilityActorInfo(this, this);
+
+		ensureMsgf(!CharacterStartUpData.IsNull(), TEXT("Forgot to assign start up data to %s"), *GetName());
 	}
 }
 
@@ -43,16 +69,9 @@ UPawnCombatComponent* AWeaverBaseCharacter::GetPawnCombatComponent() const
 	return nullptr;
 }
 
-void AWeaverBaseCharacter::PossessedBy(AController* NewController)
+UPawnUIComponent* AWeaverBaseCharacter::GetPawnUIComponent() const
 {
-	Super::PossessedBy(NewController);
-
-	if (WeaverAbilitySystemComponent)
-	{
-		WeaverAbilitySystemComponent->InitAbilityActorInfo(this, this);
-
-		ensureMsgf(!CharacterStartUpData.IsNull(), TEXT("Forgot to assign start up data to %s"), *GetName());
-	}
+	return nullptr;
 }
 
 void AWeaverBaseCharacter::OnMovementModeChanged(EMovementMode PrevMovementMode, uint8 PreviousCustomMode)
@@ -68,5 +87,25 @@ void AWeaverBaseCharacter::OnMovementModeChanged(EMovementMode PrevMovementMode,
 	else
 	{
 		WeaverAbilitySystemComponent->RemoveLooseGameplayTag(WeaverGameplayTags::Player_State_InAir);
+	}
+}
+
+void AWeaverBaseCharacter::OnMovementAttributesChanged(const FOnAttributeChangeData& Data)
+{
+	if (WeaverAttributeSet)
+	{
+		switch (CurrentGait)
+		{
+		case EWeaverCharacterGait::Run:
+			GetCharacterMovement()->MaxWalkSpeed = WeaverAttributeSet->GetMaxRunSpeed() * WeaverAttributeSet->GetMovementSpeedMultiplier();
+			break;
+		case EWeaverCharacterGait::Walk:
+			GetCharacterMovement()->MaxWalkSpeed = WeaverAttributeSet->GetMaxWalkSpeed() * WeaverAttributeSet->GetMovementSpeedMultiplier();
+			break;
+		default:
+			break;
+		}
+		
+		GetMesh()->GlobalAnimRateScale = WeaverAttributeSet->GetMovementSpeedMultiplier();
 	}
 }

@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameplayTagContainer.h"
 #include "ScalableFloat.h"
+#include "Abilities/GameplayAbilityTargetTypes.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "WeaverTypes/WeaverEnumTypes.h"
 #include "WeaverFunctionLibrary.generated.h"
@@ -69,4 +70,10 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Weaver|FunctionLibrary", meta = (WorldContext = "WorldContextObject"))
 	static void ToggleInputMode(const UObject* WorldContextObject, EWeaverInputMode InInputMode);
+
+	UFUNCTION(BlueprintPure, Category = "Weaver|FunctionLibrary")
+	static FGameplayAbilityTargetDataHandle MakeTargetDataFromHitResult(const FHitResult& HitResult);
+	
+	UFUNCTION(BlueprintPure, Category = "Weaver|FunctionLibrary")
+	static bool GetHitResultFromTargetData(const FGameplayAbilityTargetDataHandle& TargetData, int32 Index, FHitResult& OutHitResult);
 };

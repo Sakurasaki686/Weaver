@@ -7,8 +7,12 @@
 #include "AbilitySystemComponent.h"
 #include "Components/BoxComponent.h"
 #include "NiagaraComponent.h"
+#include "WeaverDebugHelper.h"
 #include "WeaverFunctionLibrary.h"
 #include "WeaverGameplayTags.h"
+#include "Characters/WeaverBaseCharacter.h"
+#include "Characters/WeaverEnemyCharacter.h"
+#include "Characters/WeaverPlayerCharacter.h"
 #include "Components/ProjectileExtensionComponentBase.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 

@@ -4,10 +4,15 @@
 #include "Characters/WeaverEnemyCharacter.h"
 
 #include "WeaverFunctionLibrary.h"
+#include "AbilitySystem/WeaverAttributeSet.h"
+#include "Components/CapsuleComponent.h"
+#include "Components/WidgetComponent.h"
 #include "Components/Combat/EnemyCombatComponent.h"
+#include "Components/UI/EnemyUIComponent.h"
 #include "DataAssets/StartUpData/DataAsset_StartUpDataBase.h"
 #include "Engine/AssetManager.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "Widgets/WeaverWidgetBase.h"
 
 AWeaverEnemyCharacter::AWeaverEnemyCharacter()
 {
@@ -17,6 +22,12 @@ AWeaverEnemyCharacter::AWeaverEnemyCharacter()
 	bUseControllerRotationRoll = false;
 	bUseControllerRotationYaw = false;
 
+	GetCapsuleComponent()->SetCollisionResponseToChannel(ECC_PlayerSpellProjectile, ECR_Block);
+	GetCapsuleComponent()->SetCollisionResponseToChannel(ECC_EnemySpellProjectile, ECR_Ignore);
+
+	GetMesh()->SetCollisionResponseToChannel(ECC_PlayerSpellProjectile, ECR_Ignore);
+	GetMesh()->SetCollisionResponseToChannel(ECC_EnemySpellProjectile, ECR_Ignore);
+
 	GetCharacterMovement()->bUseControllerDesiredRotation = false;
 	GetCharacterMovement()->bOrientRotationToMovement = true;
 	GetCharacterMovement()->RotationRate = FRotator(0.f, 180.f, 0.f);
@@ -24,11 +35,19 @@ AWeaverEnemyCharacter::AWeaverEnemyCharacter()
 	GetCharacterMovement()->BrakingDecelerationWalking = 1000.f;
 
 	EnemyCombatComponent = CreateDefaultSubobject<UEnemyCombatComponent>(TEXT("EnemyCombatComponent"));
+	EnemyUIComponent = CreateDefaultSubobject<UEnemyUIComponent>(TEXT("EnemyUIComponent"));
+	EnemyHealthWidgetComponent = CreateDefaultSubobject<UWidgetComponent>(TEXT("EnemyHealthWidgetComponent"));
+	EnemyHealthWidgetComponent->SetupAttachment(GetMesh());
 }
 
 void AWeaverEnemyCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+
+	if (UWeaverWidgetBase* HealthWidget = Cast<UWeaverWidgetBase>(EnemyHealthWidgetComponent->GetUserWidgetObject()))
+	{
+		HealthWidget->InitEnemyCreatedWidget(this);
+	}
 }
 
 void AWeaverEnemyCharacter::PossessedBy(AController* NewController)
@@ -36,6 +55,16 @@ void AWeaverEnemyCharacter::PossessedBy(AController* NewController)
 	Super::PossessedBy(NewController);
 
 	InitEnemyStartUpData();
+}
+
+UPawnUIComponent* AWeaverEnemyCharacter::GetPawnUIComponent() const
+{
+	return EnemyUIComponent;
+}
+
+UEnemyUIComponent* AWeaverEnemyCharacter::GetEnemyUIComponent() const
+{
+	return EnemyUIComponent;
 }
 
 void AWeaverEnemyCharacter::InitEnemyStartUpData()

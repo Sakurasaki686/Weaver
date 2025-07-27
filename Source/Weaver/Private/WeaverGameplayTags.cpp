@@ -83,6 +83,7 @@ namespace WeaverGameplayTags
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Status_Immunity_HitReact, "Shared.Status.Immunity.HitReact");
 	
 	UE_DEFINE_GAMEPLAY_TAG(Shared_SetByCaller_BaseDamage, "Shared.SetByCaller.BaseDamage");
+	UE_DEFINE_GAMEPLAY_TAG(Shared_SetByCaller_AttackMultiplier, "Shared.SetByCaller.AttackMultiplier");
 	
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Tuner_Focus, "Shared.Projectile.Affix.Tuner.Focus");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Tuner_Diverge, "Shared.Projectile.Affix.Tuner.Diverge");

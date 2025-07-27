@@ -7,9 +7,11 @@
 #include "EnhancedInputSubsystems.h"
 #include "WeaverGameplayTags.h"
 #include "AbilitySystem/WeaverAbilitySystemComponent.h"
+#include "AbilitySystem/WeaverAttributeSet.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/Combat/PlayerCombatComponent.h"
 #include "Components/Input/WeaverInputComponent.h"
+#include "Components/UI/PlayerUIComponent.h"
 #include "DataAssets/Input/DataAsset_InputConfig.h"
 #include "DataAssets/StartUpData/DataAsset_StartUpDataBase.h"
 #include "GameFramework/CharacterMovementComponent.h"
@@ -18,6 +20,11 @@
 AWeaverPlayerCharacter::AWeaverPlayerCharacter()
 {
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.f);
+	GetCapsuleComponent()->SetCollisionResponseToChannel(ECC_PlayerSpellProjectile, ECR_Ignore);
+	GetCapsuleComponent()->SetCollisionResponseToChannel(ECC_EnemySpellProjectile, ECR_Block);
+
+	GetMesh()->SetCollisionResponseToChannel(ECC_PlayerSpellProjectile, ECR_Ignore);
+	GetMesh()->SetCollisionResponseToChannel(ECC_EnemySpellProjectile, ECR_Ignore);
 
 	bUseControllerRotationPitch = false;
 	bUseControllerRotationYaw = false;
@@ -35,10 +42,11 @@ AWeaverPlayerCharacter::AWeaverPlayerCharacter()
 
 	GetCharacterMovement()->bOrientRotationToMovement = true;
 	GetCharacterMovement()->RotationRate = FRotator(0.f, 500.f, 0.f);
-	GetCharacterMovement()->MaxWalkSpeed = 400.f;
+	GetCharacterMovement()->MaxWalkSpeed = 600.f;
 	GetCharacterMovement()->BrakingDecelerationWalking = 2000.f;
 
 	PlayerCombatComponent = CreateDefaultSubobject<UPlayerCombatComponent>(TEXT("PlayerCombatComponent"));
+	PlayerUIComponent = CreateDefaultSubobject<UPlayerUIComponent>(TEXT("PlayerUIComponent"));
 
 	JumpMaxCount = 2;
 	CurrentGait = CharacterDefaultGait;
@@ -65,6 +73,16 @@ void AWeaverPlayerCharacter::PossessedBy(AController* NewController)
 UPawnCombatComponent* AWeaverPlayerCharacter::GetPawnCombatComponent() const
 {
 	return PlayerCombatComponent;
+}
+
+UPawnUIComponent* AWeaverPlayerCharacter::GetPawnUIComponent() const
+{
+	return PlayerUIComponent;
+}
+
+UPlayerUIComponent* AWeaverPlayerCharacter::GetPlayerUIComponent() const
+{
+	return PlayerUIComponent;
 }
 
 void AWeaverPlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -142,11 +160,11 @@ void AWeaverPlayerCharacter::Input_ToggleGait(const FInputActionValue& InputActi
 	{
 	case EWeaverCharacterGait::Run:
 		CurrentGait = EWeaverCharacterGait::Walk;
-		GetCharacterMovement()->MaxWalkSpeed = MaxWalSpeed;
+		GetCharacterMovement()->MaxWalkSpeed = WeaverAttributeSet->GetMaxWalkSpeed() * WeaverAttributeSet->GetMovementSpeedMultiplier();
 		break;
 	case EWeaverCharacterGait::Walk:
 		CurrentGait = EWeaverCharacterGait::Run;
-		GetCharacterMovement()->MaxWalkSpeed = MaxRunSpeed;
+		GetCharacterMovement()->MaxWalkSpeed = WeaverAttributeSet->GetMaxRunSpeed() * WeaverAttributeSet->GetMovementSpeedMultiplier();
 		break;
 	default:
 		break;

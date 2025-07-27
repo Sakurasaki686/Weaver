@@ -261,3 +261,34 @@ void UWeaverFunctionLibrary::ToggleInputMode(const UObject* WorldContextObject, 
 		break;
 	}
 }
+
+FGameplayAbilityTargetDataHandle UWeaverFunctionLibrary::MakeTargetDataFromHitResult(const FHitResult& HitResult)
+{
+	FGameplayAbilityTargetDataHandle Handle;
+
+	FGameplayAbilityTargetData_SingleTargetHit* NewData = new FGameplayAbilityTargetData_SingleTargetHit();
+	NewData->HitResult = HitResult;
+	Handle.Add(NewData);
+
+	return Handle;
+}
+
+bool UWeaverFunctionLibrary::GetHitResultFromTargetData(const FGameplayAbilityTargetDataHandle& TargetData, int32 Index, FHitResult& OutHitResult)
+{
+	if (!TargetData.IsValid(Index))
+	{
+		return false;
+	}
+
+	const FGameplayAbilityTargetData* Data = TargetData.Get(Index);
+
+	if (Data && Data->GetScriptStruct()->IsChildOf(FGameplayAbilityTargetData_SingleTargetHit::StaticStruct()))
+	{
+		const FGameplayAbilityTargetData_SingleTargetHit* HitData = static_cast<const FGameplayAbilityTargetData_SingleTargetHit*>(Data);
+        
+		OutHitResult = HitData->HitResult;
+		return true;
+	}
+
+	return false;
+}

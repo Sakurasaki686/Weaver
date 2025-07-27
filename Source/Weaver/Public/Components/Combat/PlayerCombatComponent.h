@@ -38,7 +38,7 @@ public:
 
 protected:
 	UPROPERTY(VisibleAnywhere, Category = "Weaver|Spell Alchemist")
-	FGameplayTag SelectedTunerTag = WeaverGameplayTags::Shared_Projectile_Affix_Tuner_Focus;
+	FGameplayTag SelectedTunerTag;
 
 	UPROPERTY(VisibleAnywhere, Category = "Weaver|Spell Alchemist")
 	TObjectPtr<UDataAsset_ElementBase> SelectedElement;

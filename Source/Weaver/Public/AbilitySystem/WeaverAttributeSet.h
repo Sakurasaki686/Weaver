@@ -13,6 +13,7 @@ GAMEPLAYATTRIBUTE_VALUE_GETTER(PropertyName) \
 GAMEPLAYATTRIBUTE_VALUE_SETTER(PropertyName) \
 GAMEPLAYATTRIBUTE_VALUE_INITTER(PropertyName)
 
+class IPawnUIInterface;
 /**
  * 
  */
@@ -45,4 +46,19 @@ public:
 	UPROPERTY(BlueprintReadOnly, Category = "Damage")
 	FGameplayAttributeData DamageTaken;
 	ATTRIBUTE_ACCESSORS(UWeaverAttributeSet, DamageTaken)
+
+	UPROPERTY(BlueprintReadOnly, Category = "Locomotion")
+	FGameplayAttributeData MovementSpeedMultiplier;
+	ATTRIBUTE_ACCESSORS(UWeaverAttributeSet, MovementSpeedMultiplier)
+
+	UPROPERTY(BlueprintReadOnly, Category = "Locomotion")
+	FGameplayAttributeData MaxRunSpeed;
+	ATTRIBUTE_ACCESSORS(UWeaverAttributeSet, MaxRunSpeed)
+
+	UPROPERTY(BlueprintReadOnly, Category = "Locomotion")
+	FGameplayAttributeData MaxWalkSpeed;
+	ATTRIBUTE_ACCESSORS(UWeaverAttributeSet, MaxWalkSpeed)
+
+private:
+	TWeakInterfacePtr<IPawnUIInterface> CachedPawnUIInterface;
 };

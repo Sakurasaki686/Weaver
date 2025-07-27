@@ -17,11 +17,11 @@ class WEAVER_API UWeaverWidgetBase : public UUserWidget
 protected:
 	virtual void NativeOnInitialized() override;
 
-	// UFUNCTION(BlueprintImplementableEvent, meta = (DisplayName = "On Owning Hero UI Component Initialized"))
-	// void BP_OnOwningHeroUIComponentInitialized(UPlayerUIComponent* OwningHeroUIComponent);
-	//
-	// UFUNCTION(BlueprintImplementableEvent, meta = (DisplayName = "On Owning Enemy UI Component Initialized"))
-	// void BP_OnOwningEnemyUIComponentInitialized(UEnemyUIComponent* OwningEnemyUIComponent);
+	UFUNCTION(BlueprintImplementableEvent, meta = (DisplayName = "On Owning Player UI Component Initialized"))
+	void BP_OnOwningPlayerUIComponentInitialized(UPlayerUIComponent* OwningPlayerUIComponent);
+	
+	UFUNCTION(BlueprintImplementableEvent, meta = (DisplayName = "On Owning Enemy UI Component Initialized"))
+	void BP_OnOwningEnemyUIComponentInitialized(UEnemyUIComponent* OwningEnemyUIComponent);
 
 public:
 	UFUNCTION(BlueprintCallable)

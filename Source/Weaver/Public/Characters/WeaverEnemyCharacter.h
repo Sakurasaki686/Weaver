@@ -6,6 +6,7 @@
 #include "Characters/WeaverBaseCharacter.h"
 #include "WeaverEnemyCharacter.generated.h"
 
+class UWidgetComponent;
 class UEnemyCombatComponent;
 /**
  * 
@@ -29,8 +30,19 @@ protected:
 	virtual void PossessedBy(AController* NewController) override;
 	//~ End APawn Interface
 
+	//~ Begin IPawnUIInterface Interface.
+	virtual UPawnUIComponent* GetPawnUIComponent() const override;
+	virtual UEnemyUIComponent* GetEnemyUIComponent() const override;
+	//~ End IPawnUIInterface Interface
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Combat")	
 	UEnemyCombatComponent* EnemyCombatComponent;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UI")
+	UEnemyUIComponent* EnemyUIComponent;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UI")
+	UWidgetComponent* EnemyHealthWidgetComponent;
 
 	UFUNCTION()
 	virtual void OnBodyCollisionBoxBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);

@@ -84,6 +84,7 @@ namespace WeaverGameplayTags
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Status_Immunity_HitReact);
 	
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_SetByCaller_BaseDamage);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_SetByCaller_AttackMultiplier);
 	
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Tuner_Focus);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Tuner_Diverge);

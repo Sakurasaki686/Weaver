@@ -6,16 +6,21 @@
 #include "GameFramework/Character.h"
 #include "AbilitySystemInterface.h"
 #include "Interfaces/PawnCombatInterface.h"
+#include "Interfaces/PawnUIInterface.h"
 #include "WeaverTypes/WeaverEnumTypes.h"
 #include "WeaverBaseCharacter.generated.h"
 
+#define ECC_PlayerSpellProjectile ECC_GameTraceChannel3
+#define ECC_EnemySpellProjectile ECC_GameTraceChannel4
+
+struct FOnAttributeChangeData;
 class UDataAsset_StartUpDataBase;
 class UWeaverAttributeSet;
 class UWeaverAbilitySystemComponent;
 class UMotionWarpingComponent;
 
 UCLASS()
-class WEAVER_API AWeaverBaseCharacter : public ACharacter, public IAbilitySystemInterface, public IPawnCombatInterface
+class WEAVER_API AWeaverBaseCharacter : public ACharacter, public IAbilitySystemInterface, public IPawnCombatInterface, public IPawnUIInterface
 {
 	GENERATED_BODY()
 
@@ -29,17 +34,17 @@ public:
 	//~ Begin IPawnCombatInterface Interface.
 	virtual UPawnCombatComponent* GetPawnCombatComponent() const override;
 	//~ End IPawnCombatInterface Interface
+	
+	//~ Begin IPawnUIInterface Interface.
+	virtual UPawnUIComponent* GetPawnUIComponent() const override;
+	//~ End IPawnUIInterface Interface
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Locomotion")
 	EWeaverCharacterGait CharacterDefaultGait = EWeaverCharacterGait::Run;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Locomotion")
-	float MaxRunSpeed = 600.f;
-
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Locomotion")
-	float MaxWalSpeed = 200.f;
-
 protected:
+	virtual void BeginPlay() override;
+	
 	//~ Begin APawn Interface.
 	virtual void PossessedBy(AController* NewController) override;
 	//~ End APawn Interface
@@ -47,6 +52,8 @@ protected:
 	//~ Begin ACharacter Interface.
 	virtual void OnMovementModeChanged(EMovementMode PrevMovementMode, uint8 PreviousCustomMode = 0) override;
 	//~ End ACharacter Interface
+
+	void OnMovementAttributesChanged(const FOnAttributeChangeData& Data);
 	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "AbilitySystem")
 	UWeaverAbilitySystemComponent* WeaverAbilitySystemComponent;
@@ -63,4 +70,7 @@ protected:
 public:
 	FORCEINLINE UWeaverAbilitySystemComponent* GetWeaverAbilitySystemComponent() const { return WeaverAbilitySystemComponent; }
 	FORCEINLINE UWeaverAttributeSet* GetWeaverAttributeSet() const { return WeaverAttributeSet; }
+
+protected:
+	EWeaverCharacterGait CurrentGait;
 };
