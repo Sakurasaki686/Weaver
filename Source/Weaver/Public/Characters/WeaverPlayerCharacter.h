@@ -6,6 +6,7 @@
 #include "GameplayTagContainer.h"
 #include "InputActionValue.h"
 #include "Characters/WeaverBaseCharacter.h"
+#include "Interfaces/PawnInteractionInterface.h"
 #include "WeaverPlayerCharacter.generated.h"
 
 class UDataAsset_InputConfig;
@@ -17,7 +18,7 @@ class UPlayerCombatComponent;
  * 
  */
 UCLASS()
-class WEAVER_API AWeaverPlayerCharacter : public AWeaverBaseCharacter
+class WEAVER_API AWeaverPlayerCharacter : public AWeaverBaseCharacter, public IPawnInteractionInterface
 {
 	GENERATED_BODY()
 
@@ -32,6 +33,10 @@ public:
 	virtual UPawnUIComponent* GetPawnUIComponent() const override;
 	virtual UPlayerUIComponent* GetPlayerUIComponent() const override;
 	//~ End IPawnUIInterface Interface
+
+	//~ Begin IPawnInteractionInterface Interface
+	virtual void SetInteractableTarget_Implementation(AActor* InInteractableTarget) override;
+	//~ End IPawnInteractionInterface Interface
 	
 protected:
 	//~ Begin APawn Interface.
@@ -85,6 +90,10 @@ private:
 public:
 	UFUNCTION(BlueprintCallable, Category = "CharacterData|Locomotion")
 	FVector GetMovementInput() const { return CachedMovementInput; }
+
+protected:
+	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category = "Interaction")
+	TObjectPtr<AActor> InteractableTarget;
 
 public:
 	FORCEINLINE UPlayerCombatComponent* GetPlayerCombatComponent() const { return PlayerCombatComponent; }

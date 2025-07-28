@@ -21,6 +21,9 @@ AWeaverChestBase::AWeaverChestBase()
 	InteractionBox->SetCollisionResponseToChannel(ECC_PlayerSpellProjectile, ECR_Ignore);
 	InteractionBox->SetCollisionResponseToChannel(ECC_EnemySpellProjectile, ECR_Ignore);
 	InteractionBox->SetupAttachment(GetRootComponent());
+	
+	InteractionBox->OnComponentBeginOverlap.AddDynamic(this, &AWeaverChestBase::OnInteractionBoxBeginOverlap);
+	InteractionBox->OnComponentEndOverlap.AddDynamic(this, &AWeaverChestBase::OnInteractionBoxEndOverlap);
 
 	ChestMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("ChestMesh"));
 	ChestMesh->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
@@ -34,25 +37,37 @@ void AWeaverChestBase::BeginPlay()
 	
 }
 
-void AWeaverChestBase::HighlightActor_Implementation()
+void AWeaverChestBase::Interact_Implementation(AActor* InInstigator)
 {
-	IPawnInteractionInterface::HighlightActor_Implementation();
+	IPawnInteractionInterface::Interact_Implementation(InInstigator);
+
+	if (CanOpen(InInstigator))
+	{
+		Open();
+	}
 }
 
-void AWeaverChestBase::UnHighlightActor_Implementation()
+bool AWeaverChestBase::CanOpen(AActor* InInstigator)
 {
-	IPawnInteractionInterface::UnHighlightActor_Implementation();
-}
-
-void AWeaverChestBase::Interact_Implementation(APawn* InstigatorPawn)
-{
-	IPawnInteractionInterface::Interact_Implementation(InstigatorPawn);
+	return false;
 }
 
 void AWeaverChestBase::Open_Implementation()
 {
-	if (OpenAnimation && ChestMesh)
+}
+
+void AWeaverChestBase::OnInteractionBoxBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
+	if (OtherActor && OtherActor->Implements<UPawnInteractionInterface>())
 	{
-		ChestMesh->PlayAnimation(OpenAnimation, false);
+		Execute_SetInteractableTarget(OtherActor, this);
+	}
+}
+
+void AWeaverChestBase::OnInteractionBoxEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
+{
+	if (OtherActor && OtherActor->Implements<UPawnInteractionInterface>())
+	{
+		Execute_SetInteractableTarget(OtherActor, nullptr);
 	}
 }

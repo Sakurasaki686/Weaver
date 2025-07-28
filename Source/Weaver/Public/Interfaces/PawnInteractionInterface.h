@@ -28,5 +28,8 @@ public:
 	void UnHighlightActor();
 
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Interaction")
-	void Interact(APawn* InstigatorPawn);
+	void Interact(AActor* InInstigator);
+
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Interaction")
+	void SetInteractableTarget(AActor* InInteractableTarget);
 };

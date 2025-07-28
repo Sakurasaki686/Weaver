@@ -85,6 +85,25 @@ UPlayerUIComponent* AWeaverPlayerCharacter::GetPlayerUIComponent() const
 	return PlayerUIComponent;
 }
 
+void AWeaverPlayerCharacter::SetInteractableTarget_Implementation(AActor* InInteractableTarget)
+{
+	IPawnInteractionInterface::SetInteractableTarget_Implementation(InInteractableTarget);
+
+	InteractableTarget = InInteractableTarget;
+
+	if (PlayerUIComponent)
+	{
+		if (InteractableTarget)
+		{
+			PlayerUIComponent->OnOverlapInteractableActor.Broadcast(InInteractableTarget);
+		}
+		else
+		{
+			PlayerUIComponent->OnOverlapInteractableActorEnd.Broadcast();
+		}
+	}
+}
+
 void AWeaverPlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	checkf(InputConfigDataAsset, TEXT("Forgot to assign a valid data asset as input config"));
