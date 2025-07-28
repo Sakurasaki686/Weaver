@@ -90,6 +90,7 @@ namespace WeaverGameplayTags
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Tuner_Aegis, "Shared.Projectile.Affix.Tuner.Aegis");
 	
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Element_None, "Shared.Projectile.Affix.Element.None");
+	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Element_Arcane, "Shared.Projectile.Affix.Element.Arcane");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Element_Fire, "Shared.Projectile.Affix.Element.Fire");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Element_Frost, "Shared.Projectile.Affix.Element.Frost");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Element_Lightning, "Shared.Projectile.Affix.Element.Lightning");
