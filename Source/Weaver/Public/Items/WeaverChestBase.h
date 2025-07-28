@@ -25,8 +25,7 @@ public:
 	virtual void Interact_Implementation(APawn* InstigatorPawn) override;
 	//~ End IPawnInteractionInterface Interface
 
-protected:
-	UFUNCTION(BlueprintNativeEvent, Category = "Weaver|Chest")
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Weaver|Chest")
 	void Open();
 
 private:
@@ -35,9 +34,6 @@ private:
 	
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	TObjectPtr<UBoxComponent> InteractionBox;
-
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Configuration|Effects", meta = (AllowPrivateAccess = "true"))
-	TObjectPtr<USoundBase> OpenSound;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Configuration|Animation", meta = (AllowPrivateAccess = "true"))
 	TObjectPtr<UAnimationAsset> OpenAnimation;
