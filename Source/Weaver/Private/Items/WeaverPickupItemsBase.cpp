@@ -1,15 +1,13 @@
 // Sakurasaki All Rights Reserved.
 
 
-#include "Items/WeaverAetherBase.h"
+#include "Items/WeaverPickupItemsBase.h"
 
 #include "NiagaraComponent.h"
 #include "Characters/WeaverBaseCharacter.h"
-#include "Characters/WeaverPlayerCharacter.h"
-#include "Components/AudioComponent.h"
 #include "Components/BoxComponent.h"
 
-AWeaverAetherBase::AWeaverAetherBase()
+AWeaverPickupItemsBase::AWeaverPickupItemsBase()
 {
 	PrimaryActorTick.bCanEverTick = false;
 
@@ -32,16 +30,16 @@ AWeaverAetherBase::AWeaverAetherBase()
 	InitialLifeSpan = 10.f;
 }
 
-void AWeaverAetherBase::BeginPlay()
+void AWeaverPickupItemsBase::BeginPlay()
 {
 	Super::BeginPlay();
 	
 }
 
-void AWeaverAetherBase::OnInteractionBoxBeginOverlap_Implementation(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+void AWeaverPickupItemsBase::OnInteractionBoxBeginOverlap_Implementation(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 }
 
-void AWeaverAetherBase::OnInteractionBoxEndOverlap_Implementation(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
+void AWeaverPickupItemsBase::OnInteractionBoxEndOverlap_Implementation(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
 }
