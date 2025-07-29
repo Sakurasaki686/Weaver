@@ -31,5 +31,8 @@ public:
 	void Interact(AActor* InInstigator);
 
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Interaction")
-	void SetInteractableTarget(AActor* InInteractableTarget);
+	void SetInteractionInfo(AActor* InInteractableTarget, const FText& InInteractionPrompt);
+
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Interaction")
+	void ShowInteractionWarningFeedback(const FText& InWarningFeedbackMessage);
 };

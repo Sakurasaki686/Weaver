@@ -3,7 +3,9 @@
 
 #include "Items/WeaverChestBase.h"
 
+#include "AbilitySystem/WeaverAttributeSet.h"
 #include "Characters/WeaverBaseCharacter.h"
+#include "Characters/WeaverPlayerCharacter.h"
 #include "Components/BoxComponent.h"
 #include "Kismet/GameplayStatics.h"
 
@@ -43,16 +45,31 @@ void AWeaverChestBase::Interact_Implementation(AActor* InInstigator)
 
 	if (CanOpen(InInstigator))
 	{
-		Open();
+		Open(InInstigator);
+	}
+	else
+	{
+		Execute_ShowInteractionWarningFeedback(InInstigator, ChestInteractionWarningHint);
 	}
 }
 
 bool AWeaverChestBase::CanOpen(AActor* InInstigator)
 {
+	if (AWeaverPlayerCharacter* Player = Cast<AWeaverPlayerCharacter>(InInstigator))
+	{
+		if (UWeaverAttributeSet* AttributeSet = Player->GetWeaverAttributeSet())
+		{
+			if (AttributeSet->GetAether() >= AetherCostToOpen)
+			{
+				return true;
+			}
+		}
+	}
+	
 	return false;
 }
 
-void AWeaverChestBase::Open_Implementation()
+void AWeaverChestBase::Open_Implementation(AActor* InInstigator)
 {
 }
 
@@ -60,7 +77,7 @@ void AWeaverChestBase::OnInteractionBoxBeginOverlap(UPrimitiveComponent* Overlap
 {
 	if (OtherActor && OtherActor->Implements<UPawnInteractionInterface>())
 	{
-		Execute_SetInteractableTarget(OtherActor, this);
+		Execute_SetInteractionInfo(OtherActor, this, ChestInteractionHint);
 	}
 }
 
@@ -68,6 +85,6 @@ void AWeaverChestBase::OnInteractionBoxEndOverlap(UPrimitiveComponent* Overlappe
 {
 	if (OtherActor && OtherActor->Implements<UPawnInteractionInterface>())
 	{
-		Execute_SetInteractableTarget(OtherActor, nullptr);
+		Execute_SetInteractionInfo(OtherActor, nullptr, ChestInteractionHint);
 	}
 }

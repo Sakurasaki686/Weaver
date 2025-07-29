@@ -59,6 +59,10 @@ public:
 	FGameplayAttributeData MaxWalkSpeed;
 	ATTRIBUTE_ACCESSORS(UWeaverAttributeSet, MaxWalkSpeed)
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Resources")
+	FGameplayAttributeData Aether;
+	ATTRIBUTE_ACCESSORS(UWeaverAttributeSet, Aether)
+
 private:
 	TWeakInterfacePtr<IPawnUIInterface> CachedPawnUIInterface;
 };

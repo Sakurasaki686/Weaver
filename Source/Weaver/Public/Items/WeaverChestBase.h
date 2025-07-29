@@ -27,7 +27,7 @@ public:
 	bool CanOpen(AActor* InInstigator);
 
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Weaver|Chest")
-	void Open();
+	void Open(AActor* InInstigator);
 
 protected:
 	UFUNCTION()
@@ -35,6 +35,15 @@ protected:
 
 	UFUNCTION()
 	void OnInteractionBoxEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Configuration|Cost")
+	float AetherCostToOpen;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Configuration|Interaction")
+	FText ChestInteractionHint;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Configuration|Interaction")
+	FText ChestInteractionWarningHint;
 
 private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))

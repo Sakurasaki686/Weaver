@@ -8,6 +8,7 @@
 #include "WeaverGameplayTags.h"
 #include "Characters/WeaverBaseCharacter.h"
 #include "Components/UI/PawnUIComponent.h"
+#include "Components/UI/PlayerUIComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Interfaces/PawnUIInterface.h"
 
@@ -20,6 +21,7 @@ UWeaverAttributeSet::UWeaverAttributeSet()
 	InitMovementSpeedMultiplier(1.f);
 	InitMaxRunSpeed(600.f);
 	InitMaxWalkSpeed(200.f);
+	InitAether(0.f);
 }
 
 void UWeaverAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data)
@@ -74,6 +76,19 @@ void UWeaverAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCall
 		if (GetCurrentHealth() <= 0.f)
 		{
 			UWeaverFunctionLibrary::AddGameplayTagToActorIfNone(Data.Target.GetAvatarActor(), WeaverGameplayTags::Shared_Status_Dead);
+		}
+	}
+
+	// 处理 Aether
+	if (Data.EvaluatedData.Attribute == GetAetherAttribute())
+	{
+		const float NewAether = FMath::Max(0.f, GetAether());
+
+		SetAether(NewAether);
+
+		if (UPlayerUIComponent* PlayerUIComponent = Cast<UPlayerUIComponent>(PawnUIComponent))
+		{
+			PlayerUIComponent->OnAetherAmountChanged.Broadcast(NewAether);
 		}
 	}
 }

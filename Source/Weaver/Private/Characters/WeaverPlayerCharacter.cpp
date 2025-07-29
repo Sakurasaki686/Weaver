@@ -3,6 +3,7 @@
 
 #include "Characters/WeaverPlayerCharacter.h"
 
+#include "AbilitySystemBlueprintLibrary.h"
 #include "Camera/CameraComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "WeaverGameplayTags.h"
@@ -85,9 +86,9 @@ UPlayerUIComponent* AWeaverPlayerCharacter::GetPlayerUIComponent() const
 	return PlayerUIComponent;
 }
 
-void AWeaverPlayerCharacter::SetInteractableTarget_Implementation(AActor* InInteractableTarget)
+void AWeaverPlayerCharacter::SetInteractionInfo_Implementation(AActor* InInteractableTarget, const FText& InInteractionPrompt)
 {
-	IPawnInteractionInterface::SetInteractableTarget_Implementation(InInteractableTarget);
+	IPawnInteractionInterface::SetInteractionInfo_Implementation(InInteractableTarget, InInteractionPrompt);
 
 	InteractableTarget = InInteractableTarget;
 
@@ -95,7 +96,7 @@ void AWeaverPlayerCharacter::SetInteractableTarget_Implementation(AActor* InInte
 	{
 		if (InteractableTarget)
 		{
-			PlayerUIComponent->OnOverlapInteractableActor.Broadcast(InInteractableTarget);
+			PlayerUIComponent->OnOverlapInteractableActor.Broadcast(InInteractableTarget, InInteractionPrompt);
 		}
 		else
 		{
@@ -103,6 +104,17 @@ void AWeaverPlayerCharacter::SetInteractableTarget_Implementation(AActor* InInte
 		}
 	}
 }
+
+void AWeaverPlayerCharacter::ShowInteractionWarningFeedback_Implementation(const FText& InWarningFeedbackMessage)
+{
+	IPawnInteractionInterface::ShowInteractionWarningFeedback_Implementation(InWarningFeedbackMessage);
+	
+	if (PlayerUIComponent)
+	{
+		PlayerUIComponent->OnInteractionWarningFeedback.Broadcast(InWarningFeedbackMessage);
+	}
+}
+
 
 void AWeaverPlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
@@ -125,7 +137,7 @@ void AWeaverPlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerIn
 	// WeaverInputComponent->BindNativeInputAction(InputConfigDataAsset, WeaverGameplayTags::InputTag_SwitchTarget, ETriggerEvent::Triggered, this, &ThisClass::Input_SwitchTargetTriggered);
 	// WeaverInputComponent->BindNativeInputAction(InputConfigDataAsset, WeaverGameplayTags::InputTag_SwitchTarget, ETriggerEvent::Completed, this, &ThisClass::Input_SwitchTargetCompleted);
 
-	// WeaverInputComponent->BindNativeInputAction(InputConfigDataAsset, WeaverGameplayTags::InputTag_PickUp_Stones, ETriggerEvent::Started, this, &ThisClass::Input_PickUpStonesStarted);
+	WeaverInputComponent->BindNativeInputAction(InputConfigDataAsset, WeaverGameplayTags::InputTag_Interact, ETriggerEvent::Started, this, &ThisClass::Input_InteractStarted);
 	
 	WeaverInputComponent->BindAbilityInputAction(InputConfigDataAsset, this, &ThisClass::Input_AbilityInputPressed, &ThisClass::Input_AbilityInputReleased);
 }
@@ -208,8 +220,13 @@ void AWeaverPlayerCharacter::Input_SwitchTargetCompleted(const FInputActionValue
 {
 }
 
-void AWeaverPlayerCharacter::Input_PickUpStonesStarted(const FInputActionValue& InputActionValue)
+void AWeaverPlayerCharacter::Input_InteractStarted(const FInputActionValue& InputActionValue)
 {
+	FGameplayEventData Data;
+	
+	UAbilitySystemBlueprintLibrary::SendGameplayEventToActor(
+		this,
+		WeaverGameplayTags::Player_Event_Interact,
+		Data
+	);
 }
-
-

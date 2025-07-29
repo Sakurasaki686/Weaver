@@ -35,7 +35,8 @@ public:
 	//~ End IPawnUIInterface Interface
 
 	//~ Begin IPawnInteractionInterface Interface
-	virtual void SetInteractableTarget_Implementation(AActor* InInteractableTarget) override;
+	virtual void SetInteractionInfo_Implementation(AActor* InInteractableTarget, const FText& InInteractionPrompt) override;
+	virtual void ShowInteractionWarningFeedback_Implementation(const FText& InWarningFeedbackMessage) override;
 	//~ End IPawnInteractionInterface Interface
 	
 protected:
@@ -80,10 +81,11 @@ private:
 	void Input_SwitchTargetTriggered(const FInputActionValue& InputActionValue);
 	void Input_SwitchTargetCompleted(const FInputActionValue& InputActionValue);
 
-	void Input_PickUpStonesStarted(const FInputActionValue& InputActionValue);
+	void Input_InteractStarted(const FInputActionValue& InputActionValue);
 	
 	void Input_AbilityInputPressed(FGameplayTag InInputTag);
 	void Input_AbilityInputReleased(FGameplayTag InInputTag);
+
 
 #pragma endregion
 

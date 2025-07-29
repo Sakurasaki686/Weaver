@@ -14,6 +14,7 @@ namespace WeaverGameplayTags
 	UE_DEFINE_GAMEPLAY_TAG(InputTag_ToggleGait, "InputTag.ToggleGait");
 	UE_DEFINE_GAMEPLAY_TAG(InputTag_Dodge, "InputTag.Dodge");
 	UE_DEFINE_GAMEPLAY_TAG(InputTag_Roll, "InputTag.Roll");
+	UE_DEFINE_GAMEPLAY_TAG(InputTag_Interact, "InputTag.Interact");
 	UE_DEFINE_GAMEPLAY_TAG(InputTag_BasicAttack_Rod, "InputTag.BasicAttack.Rod");
 	UE_DEFINE_GAMEPLAY_TAG(InputTag_PowerAttack_Rod, "InputTag.PowerAttack.Rod");
 	UE_DEFINE_GAMEPLAY_TAG(InputTag_ToggleTuner, "InputTag.ToggleTuner");
@@ -37,6 +38,8 @@ namespace WeaverGameplayTags
 	UE_DEFINE_GAMEPLAY_TAG(Player_Ability_ToggleAffix_Effect, "Player.Ability.ToggleAffix.Effect");
 	UE_DEFINE_GAMEPLAY_TAG(Player_Ability_HyperArmor, "Player.Ability.HyperArmor");
 	UE_DEFINE_GAMEPLAY_TAG(Player_Ability_Sculpt, "Player.Ability.Sculpt");
+	UE_DEFINE_GAMEPLAY_TAG(Player_Ability_Interact, "Player.Ability.Interact");
+	UE_DEFINE_GAMEPLAY_TAG(Player_Ability_Interact_OpenChest, "Player.Ability.Interact.OpenChest");
 	
 	UE_DEFINE_GAMEPLAY_TAG(Player_Weapon_Rod, "Player.Weapon.Rod");
 	
@@ -44,6 +47,7 @@ namespace WeaverGameplayTags
 	UE_DEFINE_GAMEPLAY_TAG(Player_Event_Unequip_Rod, "Player.Event.Unequip.Rod");
 	UE_DEFINE_GAMEPLAY_TAG(Player_Event_ActivateHyperArmor, "Player.Event.ActivateHyperArmor");
 	UE_DEFINE_GAMEPLAY_TAG(Player_Event_ApplyHyperArmorGE, "Player.Event.ApplyHyperArmorGE");
+	UE_DEFINE_GAMEPLAY_TAG(Player_Event_Interact, "Player.Event.Interact");
 	
 	UE_DEFINE_GAMEPLAY_TAG(Player_State_Invincible, "Player.State.Invincible");
 	UE_DEFINE_GAMEPLAY_TAG(Player_State_InAir, "Player.State.InAir");
@@ -84,6 +88,7 @@ namespace WeaverGameplayTags
 	
 	UE_DEFINE_GAMEPLAY_TAG(Shared_SetByCaller_BaseDamage, "Shared.SetByCaller.BaseDamage");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_SetByCaller_AttackMultiplier, "Shared.SetByCaller.AttackMultiplier");
+	UE_DEFINE_GAMEPLAY_TAG(Shared_SetByCaller_AetherChangeAmount, "Shared.SetByCaller.AetherChangeAmount");
 	
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Tuner_Focus, "Shared.Projectile.Affix.Tuner.Focus");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Tuner_Diverge, "Shared.Projectile.Affix.Tuner.Diverge");
