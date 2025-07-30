@@ -54,12 +54,20 @@ void AWeaverChestBase::Interact_Implementation(AActor* InInstigator)
 	}
 	else
 	{
-		Execute_ShowInteractionWarningFeedback(InInstigator, ChestInteractionWarningHint);
+		if (!bHasOpened)
+		{
+			Execute_ShowInteractionWarningFeedback(InInstigator, ChestInteractionWarningHint);
+		}
 	}
 }
 
 bool AWeaverChestBase::CanOpen(AActor* InInstigator)
 {
+	if (bHasOpened)
+	{
+		return false;
+	}
+	
 	if (AWeaverPlayerCharacter* Player = Cast<AWeaverPlayerCharacter>(InInstigator))
 	{
 		if (UWeaverAttributeSet* AttributeSet = Player->GetWeaverAttributeSet())
@@ -95,5 +103,9 @@ void AWeaverChestBase::OnInteractionBoxEndOverlap(UPrimitiveComponent* Overlappe
 }
 
 void AWeaverChestBase::StartRewardSelection_Implementation()
+{
+}
+
+void AWeaverChestBase::FinishRewardSelection_Implementation()
 {
 }

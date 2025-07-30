@@ -40,6 +40,9 @@ protected:
 	UFUNCTION(BlueprintNativeEvent, Category = "Weaver|Chest")
 	void StartRewardSelection();
 
+	UFUNCTION(BlueprintNativeEvent, Category = "Weaver|Chest")
+	void FinishRewardSelection();
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Configuration|Cost")
 	float AetherCostToOpen;
 
@@ -60,4 +63,8 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Configuration|Animation", meta = (AllowPrivateAccess = "true"))
 	TObjectPtr<UAnimationAsset> OpenAnimation;
+
+private:
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Configuration|Animation", meta = (AllowPrivateAccess = "true"))
+	bool bHasOpened;
 };

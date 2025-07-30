@@ -8,6 +8,7 @@
 #include "Components/Combat/PawnCombatComponent.h"
 #include "PlayerCombatComponent.generated.h"
 
+class UDataAsset_TunerBase;
 class UDataAsset_AffixBase;
 class UDataAsset_EffectBase;
 class UDataAsset_ElementBase;
@@ -40,15 +41,15 @@ public:
 	virtual void OnWeaponPulledFromTargetActor(AActor* InteractedActor) override;
 
 protected:
-	UPROPERTY(VisibleAnywhere, Category = "Weaver|Spell Alchemist")
-	FGameplayTag SelectedTunerTag;
-
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Weaver|Spell Alchemist", meta = (AllowPrivateAccess = "true"))
 	TMap<FGameplayTag, FAffixCategory> CategorizedAffixes;
 
 public:
 	UFUNCTION(BlueprintPure, Category = "Weaver|Spell Alchemist")
-	FGameplayTag GetSelectedTunerTag() const { return SelectedTunerTag; }
+	UDataAsset_TunerBase* GetSelectedTuner() const;
+
+	UFUNCTION(BlueprintPure, Category = "Weaver|Spell Alchemist")
+	FGameplayTag GetSelectedTunerTag() const;
 
 	UFUNCTION(BlueprintPure, Category = "Weaver|Spell Alchemist")
 	UDataAsset_ElementBase* GetSelectedElement() const;
@@ -57,7 +58,7 @@ public:
 	UDataAsset_EffectBase* GetSelectedEffect() const;
 
 	UFUNCTION(BlueprintCallable, Category = "Weaver|Spell Alchemist")
-	void SetSelectedTuner(FGameplayTag InTunerTag);
+	void SetSelectedTuner(UDataAsset_TunerBase* InTuner);
 
 	UFUNCTION(BlueprintCallable, Category = "Weaver|Spell Alchemist")
 	void SetSelectedElement(UDataAsset_ElementBase* InElement);
@@ -69,11 +70,14 @@ public:
 	void AddAffix(UDataAsset_AffixBase* InAffixData);
 
 	UFUNCTION(BlueprintCallable, Category = "Weaver|Spell Alchemist")
+	void AddAndSetTuner(UDataAsset_TunerBase* InTuner);
+
+	UFUNCTION(BlueprintCallable, Category = "Weaver|Spell Alchemist")
 	void AddAndSetElement(UDataAsset_ElementBase* InElement);
 
 	UFUNCTION(BlueprintCallable, Category = "Weaver|Spell Alchemist")
 	void AddAndSetEffect(UDataAsset_EffectBase* InEffect);
 
 	UFUNCTION(BlueprintCallable, Category = "Weaver|Spell Alchemist")
-	void SwitchToCurrentCategoryNextAffix(FGameplayTag InCategoryTag);
+	UDataAsset_AffixBase* SwitchToNextAffixInCurrentCategory(FGameplayTag InCategoryTag);
 };

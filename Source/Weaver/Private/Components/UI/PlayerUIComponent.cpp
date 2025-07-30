@@ -7,3 +7,8 @@ void UPlayerUIComponent::BroadcastChestOpened(const TArray<UDataAsset_AffixBase*
 {
 	OnChestOpened.Broadcast(OfferedAffixes);
 }
+
+void UPlayerUIComponent::BroadcastRewardSelectionFinished()
+{
+	OnRewardSelectionFinished.Broadcast();
+}
