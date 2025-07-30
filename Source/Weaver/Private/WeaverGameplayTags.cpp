@@ -90,10 +90,12 @@ namespace WeaverGameplayTags
 	UE_DEFINE_GAMEPLAY_TAG(Shared_SetByCaller_AttackMultiplier, "Shared.SetByCaller.AttackMultiplier");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_SetByCaller_AetherChangeAmount, "Shared.SetByCaller.AetherChangeAmount");
 	
+	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Tuner, "Shared.Projectile.Affix.Tuner");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Tuner_Focus, "Shared.Projectile.Affix.Tuner.Focus");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Tuner_Diverge, "Shared.Projectile.Affix.Tuner.Diverge");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Tuner_Aegis, "Shared.Projectile.Affix.Tuner.Aegis");
 	
+	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Element, "Shared.Projectile.Affix.Element");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Element_None, "Shared.Projectile.Affix.Element.None");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Element_Arcane, "Shared.Projectile.Affix.Element.Arcane");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Element_Fire, "Shared.Projectile.Affix.Element.Fire");
@@ -101,6 +103,7 @@ namespace WeaverGameplayTags
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Element_Lightning, "Shared.Projectile.Affix.Element.Lightning");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Element_Poison, "Shared.Projectile.Affix.Element.Poison");
 	
+	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Effect, "Shared.Projectile.Affix.Effect");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Effect_None, "Shared.Projectile.Affix.Effect.None");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Effect_Split, "Shared.Projectile.Affix.Effect.Split");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Effect_MultiShot, "Shared.Projectile.Affix.Effect.MultiShot");

@@ -7,6 +7,7 @@
 #include "Characters/WeaverBaseCharacter.h"
 #include "Characters/WeaverPlayerCharacter.h"
 #include "Components/BoxComponent.h"
+#include "Components/WeaverRewardComponent.h"
 #include "Kismet/GameplayStatics.h"
 
 AWeaverChestBase::AWeaverChestBase()
@@ -31,6 +32,10 @@ AWeaverChestBase::AWeaverChestBase()
 	ChestMesh->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	ChestMesh->SetCollisionObjectType(ECC_WorldStatic);
 	ChestMesh->SetupAttachment(GetRootComponent());
+
+	RewardComponent = CreateDefaultSubobject<UWeaverRewardComponent>(TEXT("RewardComponent"));
+	
+	RewardComponent->OnRewardSelectionStarted.AddDynamic(this, &ThisClass::StartRewardSelection);
 }
 
 void AWeaverChestBase::BeginPlay()
@@ -87,4 +92,8 @@ void AWeaverChestBase::OnInteractionBoxEndOverlap(UPrimitiveComponent* Overlappe
 	{
 		Execute_SetInteractionInfo(OtherActor, nullptr, ChestInteractionHint);
 	}
+}
+
+void AWeaverChestBase::StartRewardSelection_Implementation()
+{
 }

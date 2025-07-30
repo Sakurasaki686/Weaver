@@ -91,10 +91,12 @@ namespace WeaverGameplayTags
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_SetByCaller_AttackMultiplier);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_SetByCaller_AetherChangeAmount);
 	
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Tuner);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Tuner_Focus);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Tuner_Diverge);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Tuner_Aegis);
 	
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Element);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Element_None);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Element_Arcane);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Element_Fire);
@@ -102,6 +104,7 @@ namespace WeaverGameplayTags
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Element_Lightning);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Element_Poison);
 	
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Effect);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Effect_None);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Effect_Split);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Effect_MultiShot);

@@ -4,10 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "GameplayTagContainer.h"
-#include "WeaverGameplayTags.h"
+#include "WeaverTypes/WeaverStructTypes.h"
 #include "Components/Combat/PawnCombatComponent.h"
 #include "PlayerCombatComponent.generated.h"
 
+class UDataAsset_AffixBase;
 class UDataAsset_EffectBase;
 class UDataAsset_ElementBase;
 class AWeaverPlayerWeapon;
@@ -22,6 +23,8 @@ class WEAVER_API UPlayerCombatComponent : public UPawnCombatComponent
 	GENERATED_BODY()
 
 public:
+	UPlayerCombatComponent();
+	
 	virtual void BeginPlay() override;
 	
 	UFUNCTION(BlueprintCallable, Category = "Weaver|Combat")
@@ -40,21 +43,18 @@ protected:
 	UPROPERTY(VisibleAnywhere, Category = "Weaver|Spell Alchemist")
 	FGameplayTag SelectedTunerTag;
 
-	UPROPERTY(VisibleAnywhere, Category = "Weaver|Spell Alchemist")
-	TObjectPtr<UDataAsset_ElementBase> SelectedElement;
-
-	UPROPERTY(VisibleAnywhere, Category = "Weaver|Spell Alchemist")
-	TObjectPtr<UDataAsset_EffectBase> SelectedEffect;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Weaver|Spell Alchemist", meta = (AllowPrivateAccess = "true"))
+	TMap<FGameplayTag, FAffixCategory> CategorizedAffixes;
 
 public:
 	UFUNCTION(BlueprintPure, Category = "Weaver|Spell Alchemist")
 	FGameplayTag GetSelectedTunerTag() const { return SelectedTunerTag; }
 
 	UFUNCTION(BlueprintPure, Category = "Weaver|Spell Alchemist")
-	UDataAsset_ElementBase* GetSelectedElement() const { return SelectedElement; }
+	UDataAsset_ElementBase* GetSelectedElement() const;
 
 	UFUNCTION(BlueprintPure, Category = "Weaver|Spell Alchemist")
-	UDataAsset_EffectBase* GetSelectedEffect() const { return SelectedEffect; }
+	UDataAsset_EffectBase* GetSelectedEffect() const;
 
 	UFUNCTION(BlueprintCallable, Category = "Weaver|Spell Alchemist")
 	void SetSelectedTuner(FGameplayTag InTunerTag);
@@ -64,4 +64,16 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Weaver|Spell Alchemist")
 	void SetSelectedEffect(UDataAsset_EffectBase* InEffect);
+
+	UFUNCTION(BlueprintCallable, Category = "Weaver|Spell Alchemist")
+	void AddAffix(UDataAsset_AffixBase* InAffixData);
+
+	UFUNCTION(BlueprintCallable, Category = "Weaver|Spell Alchemist")
+	void AddAndSetElement(UDataAsset_ElementBase* InElement);
+
+	UFUNCTION(BlueprintCallable, Category = "Weaver|Spell Alchemist")
+	void AddAndSetEffect(UDataAsset_EffectBase* InEffect);
+
+	UFUNCTION(BlueprintCallable, Category = "Weaver|Spell Alchemist")
+	void SwitchToCurrentCategoryNextAffix(FGameplayTag InCategoryTag);
 };

@@ -6,6 +6,7 @@
 #include "ScalableFloat.h"
 #include "WeaverStructTypes.generated.h"
 
+class UDataAsset_AffixBase;
 class UInputMappingContext;
 class UWeaverPlayerGameplayAbility;
 
@@ -75,4 +76,18 @@ struct FWeaverPlayerAffix
 	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	TSoftObjectPtr<UTexture2D> SoftWeaponIconTexture;
+};
+
+USTRUCT(BlueprintType)
+struct FAffixCategory
+{
+	GENERATED_BODY()
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	TArray<TObjectPtr<UDataAsset_AffixBase>> AcquiredAffixes;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	int32 SelectedIndex = 0;
+
+	FAffixCategory() {}
 };
