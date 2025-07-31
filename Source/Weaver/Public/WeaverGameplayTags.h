@@ -25,6 +25,7 @@ namespace WeaverGameplayTags
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(InputTag_MustBeHeld);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(InputTag_MustBeHeld_BasicAegis);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(InputTag_MustBeHeld_Build);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(InputTag_MustBeHeld_EquipAffixes);
 	
 	/** Player Tags **/
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Ability_Equip_Rod);
@@ -39,6 +40,7 @@ namespace WeaverGameplayTags
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Ability_ToggleAffix_Effect);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Ability_HyperArmor);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Ability_Sculpt);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Ability_EquipAffixes);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Ability_Interact);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Ability_Interact_OpenChest);
 	
@@ -59,6 +61,7 @@ namespace WeaverGameplayTags
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_State_HyperArmor);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_State_HyperArmor_Activating);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_State_ToggleEquipping);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_State_EquipingAffixes);
 	
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_SculptMode_Build);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_SculptMode_Dig);

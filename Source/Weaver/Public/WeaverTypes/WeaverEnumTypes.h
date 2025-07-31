@@ -40,7 +40,8 @@ UENUM(BlueprintType)
 enum class EWeaverInputMode : uint8
 {
 	GameOnly,
-	UIOnly
+	UIOnly,
+	GameAndUI
 };
 
 UENUM()

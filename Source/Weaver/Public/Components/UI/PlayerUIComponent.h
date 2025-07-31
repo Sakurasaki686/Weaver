@@ -18,6 +18,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnChestOpened, const TArray<UDataAs
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnTunerChanged, UDataAsset_TunerBase*, NewTuner);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnElementChanged, UDataAsset_ElementBase*, NewElement);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnEffectChanged, UDataAsset_EffectBase*, NewEffect);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnAddANewAffix, UDataAsset_AffixBase*, NewAffix);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnRewardSelectionFinished);
 
 /**
@@ -55,6 +56,9 @@ public:
 
 	UPROPERTY(BlueprintAssignable)
 	FOnRewardSelectionFinished OnRewardSelectionFinished;
+
+	UPROPERTY(BlueprintAssignable)
+	FOnAddANewAffix OnAddANewAffix;
 
 public:
 	UFUNCTION(BlueprintCallable, Category = "UI|Broadcasting")

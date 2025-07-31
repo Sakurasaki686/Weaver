@@ -9,6 +9,7 @@
 #include "WeaverGameplayTags.h"
 #include "AbilitySystem/WeaverAbilitySystemComponent.h"
 #include "Engine/Engine.h"
+#include "GameModes/WeaverBaseGameMode.h"
 #include "Interfaces/PawnCombatInterface.h"
 #include "Kismet/KismetMathLibrary.h"
 
@@ -242,6 +243,9 @@ void UWeaverFunctionLibrary::ToggleInputMode(const UObject* WorldContextObject, 
 
 	FInputModeGameOnly GameOnlyMode;
 	FInputModeUIOnly UIOnlyMode;
+	FInputModeGameAndUI GameAndUIMode;
+
+	GameAndUIMode.SetHideCursorDuringCapture(false);
 
 	switch (InInputMode)
 	{
@@ -254,6 +258,12 @@ void UWeaverFunctionLibrary::ToggleInputMode(const UObject* WorldContextObject, 
 	case EWeaverInputMode::UIOnly:
 		{
 			PlayerController->SetInputMode(UIOnlyMode);
+			PlayerController->bShowMouseCursor = true;
+			break;
+		}
+	case EWeaverInputMode::GameAndUI:
+		{
+			PlayerController->SetInputMode(GameAndUIMode);
 			PlayerController->bShowMouseCursor = true;
 			break;
 		}

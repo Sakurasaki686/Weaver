@@ -24,6 +24,7 @@ namespace WeaverGameplayTags
 	UE_DEFINE_GAMEPLAY_TAG(InputTag_MustBeHeld, "InputTag.MustBeHeld");
 	UE_DEFINE_GAMEPLAY_TAG(InputTag_MustBeHeld_BasicAegis, "InputTag.MustBeHeld.BasicAegis");
 	UE_DEFINE_GAMEPLAY_TAG(InputTag_MustBeHeld_Build, "InputTag.MustBeHeld.Build");
+	UE_DEFINE_GAMEPLAY_TAG(InputTag_MustBeHeld_EquipAffixes, "InputTag.MustBeHeld.EquipAffixes");
 
 	/** Player Tags **/
 	UE_DEFINE_GAMEPLAY_TAG(Player_Ability_Equip_Rod, "Player.Ability.Equip.Rod");
@@ -38,6 +39,7 @@ namespace WeaverGameplayTags
 	UE_DEFINE_GAMEPLAY_TAG(Player_Ability_ToggleAffix_Effect, "Player.Ability.ToggleAffix.Effect");
 	UE_DEFINE_GAMEPLAY_TAG(Player_Ability_HyperArmor, "Player.Ability.HyperArmor");
 	UE_DEFINE_GAMEPLAY_TAG(Player_Ability_Sculpt, "Player.Ability.Sculpt");
+	UE_DEFINE_GAMEPLAY_TAG(Player_Ability_EquipAffixes, "Player.Ability.EquipAffixes");
 	UE_DEFINE_GAMEPLAY_TAG(Player_Ability_Interact, "Player.Ability.Interact");
 	UE_DEFINE_GAMEPLAY_TAG(Player_Ability_Interact_OpenChest, "Player.Ability.Interact.OpenChest");
 	
@@ -58,6 +60,7 @@ namespace WeaverGameplayTags
 	UE_DEFINE_GAMEPLAY_TAG(Player_State_HyperArmor, "Player.State.HyperArmor");
 	UE_DEFINE_GAMEPLAY_TAG(Player_State_HyperArmor_Activating, "Player.State.HyperArmor.Activating");
 	UE_DEFINE_GAMEPLAY_TAG(Player_State_ToggleEquipping, "Player.State.ToggleEquipping");
+	UE_DEFINE_GAMEPLAY_TAG(Player_State_EquipingAffixes, "Player.State.EquipingAffixes");
 	
 	UE_DEFINE_GAMEPLAY_TAG(Player_SculptMode_Build, "Player.SculptMode.Build");
 	UE_DEFINE_GAMEPLAY_TAG(Player_SculptMode_Dig, "Player.SculptMode.Dig");

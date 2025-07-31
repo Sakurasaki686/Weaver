@@ -172,6 +172,11 @@ void AWeaverPlayerCharacter::Input_Move(const FInputActionValue& InputActionValu
 
 void AWeaverPlayerCharacter::Input_Look(const FInputActionValue& InputActionValue)
 {
+	if (GetWeaverAbilitySystemComponent()->HasMatchingGameplayTag(WeaverGameplayTags::Player_State_EquipingAffixes))
+	{
+		return;
+	}
+	
 	const FVector2D LookAxisVector = InputActionValue.Get<FVector2D>();
 
 	if (LookAxisVector.X != 0.f)

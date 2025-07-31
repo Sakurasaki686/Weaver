@@ -252,6 +252,8 @@ void UPlayerCombatComponent::AddAffix(UDataAsset_AffixBase* InAffixData)
 	{
 		CategorizedAffixes[WeaverGameplayTags::Shared_Projectile_Affix_Effect].AcquiredAffixes.AddUnique(InAffixData);
 	}
+
+	GetOwner<AWeaverPlayerCharacter>()->GetPlayerUIComponent()->OnAddANewAffix.Broadcast(InAffixData);
 }
 
 void UPlayerCombatComponent::AddAndSetTuner(UDataAsset_TunerBase* InTuner)
