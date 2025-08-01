@@ -79,6 +79,25 @@ void UWeaverFunctionLibrary::BP_DoesActorHaveTag(AActor* InActor, FGameplayTag T
 	NativeDoesActorHaveTag(InActor, TagToCheck) ? OutConfirmType = EWeaverConfirmType::Yes : OutConfirmType = EWeaverConfirmType::No;
 }
 
+bool UWeaverFunctionLibrary::NativeDoesActorHaveAnyTag(AActor* InActor, FGameplayTagContainer TagsToCheck)
+{
+	const UWeaverAbilitySystemComponent* ASC = NativeGetWeaverASCFromActor(InActor);
+
+	if (!ASC || TagsToCheck.IsEmpty())
+	{
+		return false;
+	}
+
+	return ASC->HasAnyMatchingGameplayTags(TagsToCheck);
+}
+
+void UWeaverFunctionLibrary::BP_DoesActorHaveAnyTag(AActor* InActor, FGameplayTagContainer TagsToCheck, EWeaverConfirmType& OutConfirmType)
+{
+	const bool bHasAnyTag = NativeDoesActorHaveAnyTag(InActor, TagsToCheck);
+
+	OutConfirmType = bHasAnyTag ? EWeaverConfirmType::Yes : EWeaverConfirmType::No;
+}
+
 UPawnCombatComponent* UWeaverFunctionLibrary::NativeGetPawnCombatComponentFromActor(AActor* InActor)
 {
 	check(InActor);

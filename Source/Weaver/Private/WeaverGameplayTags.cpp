@@ -71,7 +71,9 @@ namespace WeaverGameplayTags
 
 	/** Enemy Tags **/
 	UE_DEFINE_GAMEPLAY_TAG(Enemy_Ability_BasicAttack, "Enemy.Ability.BasicAttack");
-
+	UE_DEFINE_GAMEPLAY_TAG(Enemy_Ability_Summon, "Enemy.Ability.Summon");
+	
+	UE_DEFINE_GAMEPLAY_TAG(Enemy_Event_Summon, "Enemy.Event.Summon");
 
 	/** Shared Tags **/
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Ability_HitReact, "Shared.Ability.HitReact");
@@ -88,6 +90,8 @@ namespace WeaverGameplayTags
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Status_HitReact_Right, "Shared.Status.HitReact.Right");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Status_Dead, "Shared.Status.Dead");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Status_Immunity_HitReact, "Shared.Status.Immunity.HitReact");
+	UE_DEFINE_GAMEPLAY_TAG(Shared_Status_Invincible, "Shared.Status.Invincible");
+	UE_DEFINE_GAMEPLAY_TAG(Shared_Status_Emergence, "Shared.Status.Emergence");
 	
 	UE_DEFINE_GAMEPLAY_TAG(Shared_SetByCaller_BaseDamage, "Shared.SetByCaller.BaseDamage");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_SetByCaller_AttackMultiplier, "Shared.SetByCaller.AttackMultiplier");

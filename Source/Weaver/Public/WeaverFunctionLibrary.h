@@ -42,6 +42,11 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Weaver|FunctionLibrary", meta = (DisplayName = "Does Actor Have Tag", ExpandEnumAsExecs = "OutConfirmType"))
 	static void BP_DoesActorHaveTag(AActor* InActor, FGameplayTag TagToCheck, EWeaverConfirmType& OutConfirmType);
 
+	static bool NativeDoesActorHaveAnyTag(AActor* InActor, FGameplayTagContainer TagsToCheck);
+
+	UFUNCTION(BlueprintCallable, Category = "Weaver|FunctionLibrary", meta = (DisplayName = "Does Actor Have Any Tag", ExpandEnumAsExecs = "OutConfirmType"))
+	static void BP_DoesActorHaveAnyTag(AActor* InActor, FGameplayTagContainer TagsToCheck, EWeaverConfirmType& OutConfirmType);
+
 	static UPawnCombatComponent* NativeGetPawnCombatComponentFromActor(AActor* InActor);
 
 	UFUNCTION(BlueprintCallable, Category = "Weaver|FunctionLibrary", meta = (DisplayName = "Get Pawn Combat Component From Actor", ExpandEnumAsExecs = "OutValidType"))
