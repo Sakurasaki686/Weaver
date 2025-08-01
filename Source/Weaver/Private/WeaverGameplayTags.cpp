@@ -70,8 +70,8 @@ namespace WeaverGameplayTags
 	UE_DEFINE_GAMEPLAY_TAG(Player_Cooldown_HyperArmor, "Player.Cooldown.HyperArmor");
 
 	/** Enemy Tags **/
-	UE_DEFINE_GAMEPLAY_TAG(Enemy_Ability_BasicAttack, "Enemy.Ability.BasicAttack");
-	UE_DEFINE_GAMEPLAY_TAG(Enemy_Ability_Summon, "Enemy.Ability.Summon");
+	UE_DEFINE_GAMEPLAY_TAG(Enemy_Ability_Attack_Melee, "Enemy.Ability.Attack.Melee");
+	UE_DEFINE_GAMEPLAY_TAG(Enemy_Ability_Attack_Ranged, "Enemy.Ability.Attack.Ranged");
 	
 	UE_DEFINE_GAMEPLAY_TAG(Enemy_Event_Summon, "Enemy.Event.Summon");
 
