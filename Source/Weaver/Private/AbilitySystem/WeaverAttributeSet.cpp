@@ -69,7 +69,7 @@ void UWeaverAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCall
 			NewCurrentHealth
 		);
 
-		// Debug::Print(DebugString, FColor::Green);
+		Debug::Print(DebugString, FColor::Green);
 		
 		PawnUIComponent->OnCurrentHealthChanged.Broadcast(GetCurrentHealth() / GetMaxHealth());
 

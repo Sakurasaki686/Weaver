@@ -76,6 +76,8 @@ namespace WeaverGameplayTags
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Enemy_Ability_Summon);
 	
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Enemy_Event_Summon);
+	
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Enemy_Status_Unblockable);
 
 	/** Shared Tags **/
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Ability_HitReact);
@@ -85,6 +87,7 @@ namespace WeaverGameplayTags
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Event_ProjectileHitTarget);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Event_InterruptCurrentMontage);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Event_SpawnProjectile);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Event_MeleeHit);
 	
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Status_Dead);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Status_HitReact_Front);

@@ -3,6 +3,7 @@
 
 #include "Components/Combat/PawnCombatComponent.h"
 
+#include "WeaverFunctionLibrary.h"
 #include "Components/BoxComponent.h"
 #include "Items/Weapons/WeaverWeaponBase.h"
 
@@ -59,7 +60,6 @@ void UPawnCombatComponent::ToggleWeaponCollision(bool bShouldEnable, EToggleDama
 
 void UPawnCombatComponent::OnHitTargetActor(AActor* HitActor)
 {
-	
 }
 
 void UPawnCombatComponent::OnWeaponPulledFromTargetActor(AActor* InteractedActor)

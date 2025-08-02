@@ -72,8 +72,11 @@ namespace WeaverGameplayTags
 	/** Enemy Tags **/
 	UE_DEFINE_GAMEPLAY_TAG(Enemy_Ability_Attack_Melee, "Enemy.Ability.Attack.Melee");
 	UE_DEFINE_GAMEPLAY_TAG(Enemy_Ability_Attack_Ranged, "Enemy.Ability.Attack.Ranged");
+	UE_DEFINE_GAMEPLAY_TAG(Enemy_Ability_Summon, "Enemy.Ability.Summon");
 	
-	UE_DEFINE_GAMEPLAY_TAG(Enemy_Event_Summon, "Enemy.Event.Summon");
+	UE_DEFINE_GAMEPLAY_TAG(Enemy_Event_Summon, "Enemy.Event.Summon")
+
+	UE_DEFINE_GAMEPLAY_TAG(Enemy_Status_Unblockable, "Enemy.Status.Unblockable");
 
 	/** Shared Tags **/
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Ability_HitReact, "Shared.Ability.HitReact");
@@ -83,6 +86,7 @@ namespace WeaverGameplayTags
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Event_ProjectileHitTarget, "Shared.Event.ProjectileHitTarget");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Event_InterruptCurrentMontage, "Shared.Event.InterruptCurrentMontage");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Event_SpawnProjectile, "Shared.Event.SpawnProjectile");
+	UE_DEFINE_GAMEPLAY_TAG(Shared_Event_MeleeHit, "Shared.Event.MeleeHit");
 	
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Status_HitReact_Front, "Shared.Status.HitReact.Front");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Status_HitReact_Back, "Shared.Status.HitReact.Back");

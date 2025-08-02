@@ -6,6 +6,7 @@
 #include "Characters/WeaverBaseCharacter.h"
 #include "WeaverEnemyCharacter.generated.h"
 
+class UBoxComponent;
 class UWidgetComponent;
 class UEnemyCombatComponent;
 /**
@@ -35,6 +36,24 @@ protected:
 	virtual UEnemyUIComponent* GetEnemyUIComponent() const override;
 	//~ End IPawnUIInterface Interface
 
+#if WITH_EDITOR
+	//~ Begin UObject Interface.
+	virtual void PostEditChangeProperty( struct FPropertyChangedEvent& PropertyChangedEvent);
+	//~ End UObject Interface
+#endif
+	
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Combat")
+	UBoxComponent* LeftHandCollisionBox;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Combat")
+	FName LeftHandCollisionBoxAttachBoneName;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Combat")
+	UBoxComponent* RightHandCollisionBox;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Combat")
+	FName RightHandCollisionBoxAttachBoneName;
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Combat")	
 	UEnemyCombatComponent* EnemyCombatComponent;
 
@@ -52,4 +71,6 @@ private:
 
 public:
 	FORCEINLINE UEnemyCombatComponent* GetEnemyCombatComponent() const { return EnemyCombatComponent; }
+	FORCEINLINE UBoxComponent* GetLeftHandCollisionBox() const { return LeftHandCollisionBox; }
+	FORCEINLINE UBoxComponent* GetRightHandCollisionBox() const { return RightHandCollisionBox; }
 };

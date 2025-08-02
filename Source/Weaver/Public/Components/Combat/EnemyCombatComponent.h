@@ -17,6 +17,8 @@ class WEAVER_API UEnemyCombatComponent : public UPawnCombatComponent
 	GENERATED_BODY()
 
 protected:
+	virtual void ToggleBodyCollisionBoxCollision(bool bShouldEnable, EToggleDamageType ToggleDamageType) override;
+	
 	UPROPERTY(VisibleAnywhere, Category = "Weaver|Spell Alchemist")
 	TObjectPtr<UDataAsset_ElementBase> SelectedElement;
 
@@ -24,6 +26,8 @@ protected:
 	TObjectPtr<UDataAsset_EffectBase> SelectedEffect;
 
 public:
+	virtual void OnHitTargetActor(AActor* HitActor) override;
+
 	UFUNCTION(BlueprintPure, Category = "Weaver|Spell Alchemist")
 	UDataAsset_ElementBase* GetSelectedElement() const { return SelectedElement; }
 

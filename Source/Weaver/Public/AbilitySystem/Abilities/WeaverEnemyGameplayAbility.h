@@ -23,9 +23,6 @@ public:
 	UFUNCTION(BlueprintPure, Category = "Weaver|Ability")
 	UEnemyCombatComponent* GetEnemyCombatComponentFromActorInfo();
 
-	UFUNCTION(BlueprintPure, Category = "Weaver|Ability")
-	FGameplayEffectSpecHandle MakeEnemyDamageEffectSpecHandle(TSubclassOf<UGameplayEffect> EffectClass, const FScalableFloat& InDamageScalableFloat);
-
 private:
 	TWeakObjectPtr<AWeaverEnemyCharacter> CachedWeaverEnemyCharacter;
 };
