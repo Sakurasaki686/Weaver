@@ -73,6 +73,7 @@ namespace WeaverGameplayTags
 	UE_DEFINE_GAMEPLAY_TAG(Enemy_Ability_Attack_Melee, "Enemy.Ability.Attack.Melee");
 	UE_DEFINE_GAMEPLAY_TAG(Enemy_Ability_Attack_Ranged, "Enemy.Ability.Attack.Ranged");
 	UE_DEFINE_GAMEPLAY_TAG(Enemy_Ability_Summon, "Enemy.Ability.Summon");
+	UE_DEFINE_GAMEPLAY_TAG(Enemy_Ability_Dodge, "Enemy.Ability.Dodge");
 	
 	UE_DEFINE_GAMEPLAY_TAG(Enemy_Event_Summon, "Enemy.Event.Summon")
 
@@ -80,6 +81,7 @@ namespace WeaverGameplayTags
 
 	/** Shared Tags **/
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Ability_HitReact, "Shared.Ability.HitReact");
+	UE_DEFINE_GAMEPLAY_TAG(Shared_Ability_HandleProjectileHit, "Shared.Ability.HandleProjectileHit");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Ability_Death, "Shared.Ability.Death");
 	
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Event_HitReact, "Shared.Event.HitReact");
@@ -87,6 +89,9 @@ namespace WeaverGameplayTags
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Event_InterruptCurrentMontage, "Shared.Event.InterruptCurrentMontage");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Event_SpawnProjectile, "Shared.Event.SpawnProjectile");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Event_MeleeHit, "Shared.Event.MeleeHit");
+	UE_DEFINE_GAMEPLAY_TAG(Shared_Event_AttackCombo_1, "Shared.Event.AttackCombo.1");
+	UE_DEFINE_GAMEPLAY_TAG(Shared_Event_AttackCombo_2, "Shared.Event.AttackCombo.2");
+	UE_DEFINE_GAMEPLAY_TAG(Shared_Event_AttackCombo_3, "Shared.Event.AttackCombo.3");
 	
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Status_HitReact_Front, "Shared.Status.HitReact.Front");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Status_HitReact_Back, "Shared.Status.HitReact.Back");
@@ -113,6 +118,7 @@ namespace WeaverGameplayTags
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Element_Frost, "Shared.Projectile.Affix.Element.Frost");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Element_Lightning, "Shared.Projectile.Affix.Element.Lightning");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Element_Poison, "Shared.Projectile.Affix.Element.Poison");
+	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Element_SevarogSlash, "Shared.Projectile.Affix.Element.SevarogSlash");
 	
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Effect, "Shared.Projectile.Affix.Effect");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Effect_None, "Shared.Projectile.Affix.Effect.None");

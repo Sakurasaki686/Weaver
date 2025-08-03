@@ -4,7 +4,6 @@
 #include "Characters/WeaverEnemyCharacter.h"
 
 #include "WeaverFunctionLibrary.h"
-#include "AbilitySystem/WeaverAttributeSet.h"
 #include "Components/BoxComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/WidgetComponent.h"
@@ -49,6 +48,13 @@ AWeaverEnemyCharacter::AWeaverEnemyCharacter()
 	RightHandCollisionBox->SetupAttachment(GetMesh());
 	RightHandCollisionBox->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	RightHandCollisionBox->OnComponentBeginOverlap.AddDynamic(this, &ThisClass::OnBodyCollisionBoxBeginOverlap);
+	
+	ThreatDetectionBox = CreateDefaultSubobject<UBoxComponent>(TEXT("ThreatDetectionBox"));
+	ThreatDetectionBox->SetupAttachment(GetRootComponent());
+	ThreatDetectionBox->SetCollisionResponseToAllChannels(ECR_Ignore);
+	ThreatDetectionBox->SetCollisionResponseToChannel(ECC_PlayerSpellProjectile, ECR_Overlap);
+	ThreatDetectionBox->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	ThreatDetectionBox->OnComponentBeginOverlap.AddDynamic(this, &ThisClass::AWeaverEnemyCharacter::OnThreatDetectionCollisionBoxBeginOverlap);
 }
 
 void AWeaverEnemyCharacter::BeginPlay()
@@ -132,4 +138,8 @@ void AWeaverEnemyCharacter::OnBodyCollisionBoxBeginOverlap(UPrimitiveComponent* 
 			EnemyCombatComponent->OnHitTargetActor(HitPawn);
 		}
 	}
+}
+
+void AWeaverEnemyCharacter::OnThreatDetectionCollisionBoxBeginOverlap_Implementation(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
 }

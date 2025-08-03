@@ -74,6 +74,7 @@ namespace WeaverGameplayTags
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Enemy_Ability_Attack_Melee);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Enemy_Ability_Attack_Ranged);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Enemy_Ability_Summon);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Enemy_Ability_Dodge);
 	
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Enemy_Event_Summon);
 	
@@ -81,6 +82,7 @@ namespace WeaverGameplayTags
 
 	/** Shared Tags **/
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Ability_HitReact);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Ability_HandleProjectileHit);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Ability_Death);
 
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Event_HitReact);
@@ -88,6 +90,9 @@ namespace WeaverGameplayTags
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Event_InterruptCurrentMontage);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Event_SpawnProjectile);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Event_MeleeHit);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Event_AttackCombo_1);
+    WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Event_AttackCombo_2);
+    WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Event_AttackCombo_2);
 	
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Status_Dead);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Status_HitReact_Front);
@@ -114,6 +119,7 @@ namespace WeaverGameplayTags
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Element_Frost);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Element_Lightning);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Element_Poison);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Element_SevarogSlash);
 	
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Effect);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Effect_None);
