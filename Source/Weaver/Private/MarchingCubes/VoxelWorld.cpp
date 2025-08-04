@@ -293,7 +293,7 @@ void AVoxelWorld::SculptInWorld_Symmetrical(UVoxelChunk* TargetChunk, UVoxelBrus
 	}
 }
 
-void AVoxelWorld::SculptAtLocation(FVector WorldLocation, float BrushRadius, float BrushStrength)
+void AVoxelWorld::SculptAtLocation_Symmetrical(FVector WorldLocation, float BrushRadius, float BrushStrength)
 {
 	if (BrushRadius <= 0.0f)
 	{
@@ -320,10 +320,9 @@ void AVoxelWorld::SculptAtLocation(FVector WorldLocation, float BrushRadius, flo
 		SphereShape->Radius = BrushRadius;
 	}
 
-	Brush->Strength =BrushStrength;
+	Brush->Strength = BrushStrength;
 
-	TargetChunk->Sculpt(Brush);
-	TargetChunk->Update();
+	SculptInWorld_Symmetrical(TargetChunk, Brush);
 }
 
 float AVoxelWorld::GetBrushRadius(UVoxelBrush* Brush) const

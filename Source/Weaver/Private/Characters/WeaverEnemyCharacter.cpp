@@ -4,6 +4,7 @@
 #include "Characters/WeaverEnemyCharacter.h"
 
 #include "WeaverFunctionLibrary.h"
+#include "AbilitySystem/WeaverAbilitySystemComponent.h"
 #include "Components/BoxComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/WidgetComponent.h"
@@ -60,7 +61,7 @@ AWeaverEnemyCharacter::AWeaverEnemyCharacter()
 void AWeaverEnemyCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-
+	
 	if (UWeaverWidgetBase* HealthWidget = Cast<UWeaverWidgetBase>(EnemyHealthWidgetComponent->GetUserWidgetObject()))
 	{
 		HealthWidget->InitEnemyCreatedWidget(this);

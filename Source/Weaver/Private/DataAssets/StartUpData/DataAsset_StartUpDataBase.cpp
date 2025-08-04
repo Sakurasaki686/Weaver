@@ -32,7 +32,7 @@ void UDataAsset_StartUpDataBase::GiveToAbilitySystemComponent(UWeaverAbilitySyst
 
 void UDataAsset_StartUpDataBase::GrantAbilities(const TArray<TSubclassOf<UWeaverGameplayAbility>>& InAbilitiesToGive, UWeaverAbilitySystemComponent* InASCToGive, int32 ApplyLevel)
 {
-	if (InAbilitiesToGive.IsEmpty())
+	if (InAbilitiesToGive.IsEmpty() || !IsValid(InASCToGive))
 	{
 		return;
 	}

@@ -74,8 +74,14 @@ namespace WeaverGameplayTags
 	UE_DEFINE_GAMEPLAY_TAG(Enemy_Ability_Attack_Ranged, "Enemy.Ability.Attack.Ranged");
 	UE_DEFINE_GAMEPLAY_TAG(Enemy_Ability_Summon, "Enemy.Ability.Summon");
 	UE_DEFINE_GAMEPLAY_TAG(Enemy_Ability_Dodge, "Enemy.Ability.Dodge");
+	UE_DEFINE_GAMEPLAY_TAG(Enemy_Ability_SpeedBurst, "Enemy.Ability.SpeedBurst");
+	UE_DEFINE_GAMEPLAY_TAG(Enemy_Ability_Teleport, "Enemy.Ability.Teleport");
 	
 	UE_DEFINE_GAMEPLAY_TAG(Enemy_Event_Summon, "Enemy.Event.Summon")
+	UE_DEFINE_GAMEPLAY_TAG(Enemy_Event_AttackPerceive, "Enemy.Event.AttackPerceive")
+	UE_DEFINE_GAMEPLAY_TAG(Enemy_Event_SevarogAOE, "Enemy.Event.SevarogAOE")
+	UE_DEFINE_GAMEPLAY_TAG(Enemy_Event_PreSevarogAOE, "Enemy.Event.PreSevarogAOE")
+	UE_DEFINE_GAMEPLAY_TAG(Enemy_Event_Teleport, "Enemy.Event.Teleport")
 
 	UE_DEFINE_GAMEPLAY_TAG(Enemy_Status_Unblockable, "Enemy.Status.Unblockable");
 
@@ -92,6 +98,7 @@ namespace WeaverGameplayTags
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Event_AttackCombo_1, "Shared.Event.AttackCombo.1");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Event_AttackCombo_2, "Shared.Event.AttackCombo.2");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Event_AttackCombo_3, "Shared.Event.AttackCombo.3");
+	UE_DEFINE_GAMEPLAY_TAG(Shared_Event_CameraShake, "Shared.Event.CameraShake");
 	
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Status_HitReact_Front, "Shared.Status.HitReact.Front");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Status_HitReact_Back, "Shared.Status.HitReact.Back");
@@ -101,6 +108,7 @@ namespace WeaverGameplayTags
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Status_Immunity_HitReact, "Shared.Status.Immunity.HitReact");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Status_Invincible, "Shared.Status.Invincible");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Status_Emergence, "Shared.Status.Emergence");
+	UE_DEFINE_GAMEPLAY_TAG(Shared_Status_CanDodge, "Shared.Status.CanDodge");
 	
 	UE_DEFINE_GAMEPLAY_TAG(Shared_SetByCaller_BaseDamage, "Shared.SetByCaller.BaseDamage");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_SetByCaller_AttackMultiplier, "Shared.SetByCaller.AttackMultiplier");

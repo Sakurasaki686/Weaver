@@ -35,8 +35,8 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Voxel", meta = (DisplayName = "Sculpt In World (Symmetrical)"))
 	void SculptInWorld_Symmetrical(UVoxelChunk* TargetChunk, UVoxelBrush* WorldSpaceBrush);
 
-	UFUNCTION(BlueprintCallable, Category = "Voxel")
-	void SculptAtLocation(FVector WorldLocation, float BrushRadius, float BrushStrength);
+	UFUNCTION(BlueprintCallable, Category = "Voxel", meta = (DisplayName = "Sculpt At Location (Symmetrical)"))
+	void SculptAtLocation_Symmetrical(FVector WorldLocation, float BrushRadius, float BrushStrength);
 	
 protected:
 	UPROPERTY()
