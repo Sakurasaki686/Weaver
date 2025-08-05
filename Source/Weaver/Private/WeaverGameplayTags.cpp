@@ -82,9 +82,11 @@ namespace WeaverGameplayTags
 	UE_DEFINE_GAMEPLAY_TAG(Enemy_Event_AttackPerceive, "Enemy.Event.AttackPerceive")
 	UE_DEFINE_GAMEPLAY_TAG(Enemy_Event_SevarogAOE, "Enemy.Event.SevarogAOE")
 	UE_DEFINE_GAMEPLAY_TAG(Enemy_Event_PreSevarogAOE, "Enemy.Event.PreSevarogAOE")
+	UE_DEFINE_GAMEPLAY_TAG(Enemy_Event_ReadyToTeleport, "Enemy.Event.ReadyToTeleport")
 	UE_DEFINE_GAMEPLAY_TAG(Enemy_Event_Teleport, "Enemy.Event.Teleport")
 
 	UE_DEFINE_GAMEPLAY_TAG(Enemy_Status_Unblockable, "Enemy.Status.Unblockable");
+	UE_DEFINE_GAMEPLAY_TAG(Enemy_Status_ReadyToTeleport, "Enemy.Status.ReadyToTeleport");
 
 	/** Shared Tags **/
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Ability_HitReact, "Shared.Ability.HitReact");
@@ -100,6 +102,10 @@ namespace WeaverGameplayTags
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Event_AttackCombo_2, "Shared.Event.AttackCombo.2");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Event_AttackCombo_3, "Shared.Event.AttackCombo.3");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Event_CameraShake, "Shared.Event.CameraShake");
+	UE_DEFINE_GAMEPLAY_TAG(Shared_Event_MontageSectionFinished_1, "Shared.Event.MontageSectionFinished.1");
+	UE_DEFINE_GAMEPLAY_TAG(Shared_Event_MontageSectionFinished_2, "Shared.Event.MontageSectionFinished.2");
+	UE_DEFINE_GAMEPLAY_TAG(Shared_Event_MontageSectionFinished_3, "Shared.Event.MontageSectionFinished.3");
+	UE_DEFINE_GAMEPLAY_TAG(Shared_Event_UltimateAttack, "Shared.Event.UltimateAttack");
 	
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Status_HitReact_Front, "Shared.Status.HitReact.Front");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Status_HitReact_Back, "Shared.Status.HitReact.Back");

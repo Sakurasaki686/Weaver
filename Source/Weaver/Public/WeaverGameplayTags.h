@@ -83,9 +83,11 @@ namespace WeaverGameplayTags
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Enemy_Event_AttackPerceive);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Enemy_Event_SevarogAOE);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Enemy_Event_PreSevarogAOE);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Enemy_Event_ReadyToTeleport);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Enemy_Event_Teleport);
 	
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Enemy_Status_Unblockable);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Enemy_Status_ReadyToTeleport);
 
 	/** Shared Tags **/
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Ability_HitReact);
@@ -102,6 +104,10 @@ namespace WeaverGameplayTags
     WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Event_AttackCombo_2);
     WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Event_CameraShake);
     WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Event_SevarogAOE);
+    WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Event_MontageSectionFinished_1);
+    WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Event_MontageSectionFinished_2);
+    WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Event_MontageSectionFinished_3);
+    WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Event_UltimateAttack);
 	
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Status_Dead);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Status_HitReact_Front);
@@ -140,4 +146,5 @@ namespace WeaverGameplayTags
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Effect_Ricochet);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Effect_Lifesteal);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Effect_DelayedDetonation);
+	
 }

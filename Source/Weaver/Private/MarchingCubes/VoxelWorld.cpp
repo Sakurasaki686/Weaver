@@ -41,7 +41,7 @@ UVoxelChunk* AVoxelWorld::GetOrCreateChunkByID(const FIntVector& ChunkID)
 	UVoxelChunk* NewChunk = NewChunkActor->FindComponentByClass<UVoxelChunk>();
 	if (!NewChunk)
 	{
-		UE_LOG(LogTemp, Error, TEXT("VoxelWorld: 生成的Actor上没有找到 UVoxelChunk 组件！"));
+		UE_LOG(LogTemp, Error, TEXT("VoxelWorld: 生成的 Actor 上没有找到 UVoxelChunk 组件！"));
 		NewChunkActor->Destroy();
 		return nullptr;
 	}

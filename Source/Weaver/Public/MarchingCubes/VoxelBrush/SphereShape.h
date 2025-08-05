@@ -17,5 +17,6 @@ class WEAVER_API USphereShape : public UVoxelShape
 public:
 	UPROPERTY(BlueprintReadWrite)
 	float Radius = 2.0;
+	
 	virtual float SignedDistance(FVector& VoxelPosition, FVector& BrushPosition) override;
 };

@@ -19,8 +19,10 @@ class WEAVER_API UVoxelBrush : public UObject
 public:
 	UPROPERTY(BlueprintReadWrite)
 	FVector Location;
+	
 	UPROPERTY(BlueprintReadWrite)
 	UVoxelShape* Shape;
+	
 	UPROPERTY(BlueprintReadWrite)
 	float Strength = 1.0;
 	
