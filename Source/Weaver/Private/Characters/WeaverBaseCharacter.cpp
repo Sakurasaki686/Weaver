@@ -82,11 +82,11 @@ void AWeaverBaseCharacter::OnMovementModeChanged(EMovementMode PrevMovementMode,
 
 	if (GetCharacterMovement() && GetCharacterMovement()->IsFalling())
 	{
-		WeaverAbilitySystemComponent->AddLooseGameplayTag(WeaverGameplayTags::Player_State_InAir);
+		WeaverAbilitySystemComponent->SetTagMapCount(WeaverGameplayTags::Player_State_InAir, 1);
 	}
 	else
 	{
-		WeaverAbilitySystemComponent->RemoveLooseGameplayTag(WeaverGameplayTags::Player_State_InAir);
+		WeaverAbilitySystemComponent->SetTagMapCount(WeaverGameplayTags::Player_State_InAir, 0);
 	}
 }
 
