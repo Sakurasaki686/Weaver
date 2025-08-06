@@ -6,6 +6,8 @@
 #include "ScalableFloat.h"
 #include "WeaverStructTypes.generated.h"
 
+class UDataAsset_EffectBase;
+class UDataAsset_ElementBase;
 class UDataAsset_AffixBase;
 class UInputMappingContext;
 class UWeaverPlayerGameplayAbility;
@@ -90,4 +92,21 @@ struct FAffixCategory
 	int32 SelectedIndex = 0;
 
 	FAffixCategory() {}
+};
+
+USTRUCT(BlueprintType)
+struct FAffixCombination
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadOnly, Category = "Affix")
+	TSoftObjectPtr<UDataAsset_ElementBase> ElementAffix;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Affix")
+	TSoftObjectPtr<UDataAsset_EffectBase> EffectAffix;
+
+	bool operator==(const FAffixCombination& Other) const
+	{
+		return ElementAffix == Other.ElementAffix && EffectAffix == Other.EffectAffix;
+	}
 };
