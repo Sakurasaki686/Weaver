@@ -1,9 +1,9 @@
 // Sakurasaki All Rights Reserved.
 
 
+#include "Subsystems/AffixPoolSubsystem.h"
 #include "DataAssets/Affixes/DataAsset_ElementBase.h"
 #include "DataAssets/Affixes/DataAsset_EffectBase.h"
-#include "Subsystems/AffixPoolSubsystem.h"
 
 void UAffixPoolSubsystem::AddAffixCombinationToPool(UDataAsset_ElementBase* InElement, UDataAsset_EffectBase* InEffect)
 {
