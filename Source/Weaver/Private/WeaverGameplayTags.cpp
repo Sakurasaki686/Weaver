@@ -42,6 +42,7 @@ namespace WeaverGameplayTags
 	UE_DEFINE_GAMEPLAY_TAG(Player_Ability_EquipAffixes, "Player.Ability.EquipAffixes");
 	UE_DEFINE_GAMEPLAY_TAG(Player_Ability_Interact, "Player.Ability.Interact");
 	UE_DEFINE_GAMEPLAY_TAG(Player_Ability_Interact_OpenChest, "Player.Ability.Interact.OpenChest");
+	UE_DEFINE_GAMEPLAY_TAG(Player_Ability_Interact_AwakenBoss, "Player.Ability.Interact.AwakenBoss");
 	
 	UE_DEFINE_GAMEPLAY_TAG(Player_Weapon_Rod, "Player.Weapon.Rod");
 	

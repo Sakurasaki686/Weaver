@@ -43,6 +43,7 @@ namespace WeaverGameplayTags
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Ability_EquipAffixes);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Ability_Interact);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Ability_Interact_OpenChest);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Ability_Interact_AwakenBoss);
 	
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Weapon_Rod);
 
