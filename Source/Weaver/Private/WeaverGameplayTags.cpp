@@ -145,4 +145,8 @@ namespace WeaverGameplayTags
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Effect_Ricochet, "Shared.Projectile.Affix.Effect.Ricochet");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Effect_Lifesteal, "Shared.Projectile.Affix.Effect.Lifesteal");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Effect_DelayedDetonation, "Shared.Projectile.Affix.Effect.DelayedDetonation");
+
+	/** Game Data Tags **/
+	UE_DEFINE_GAMEPLAY_TAG(GameData_Level_Forest, "GameData.Level.Forest");
+	UE_DEFINE_GAMEPLAY_TAG(GameData_Level_MainMenu, "GameData.Level.MainMenu");
 }

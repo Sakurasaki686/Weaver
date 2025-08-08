@@ -147,5 +147,8 @@ namespace WeaverGameplayTags
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Effect_Ricochet);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Effect_Lifesteal);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Effect_DelayedDetonation);
-	
+
+	/** Game Data Tags **/
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(GameData_Level_Forest);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(GameData_Level_MainMenu);
 }
