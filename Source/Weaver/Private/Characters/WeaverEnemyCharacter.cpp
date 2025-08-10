@@ -4,7 +4,6 @@
 #include "Characters/WeaverEnemyCharacter.h"
 
 #include "WeaverFunctionLibrary.h"
-#include "AbilitySystem/WeaverAbilitySystemComponent.h"
 #include "AbilitySystem/WeaverAttributeSet.h"
 #include "Components/BoxComponent.h"
 #include "Components/CapsuleComponent.h"

@@ -95,23 +95,6 @@ struct FAffixCategory
 };
 
 USTRUCT(BlueprintType)
-struct FAffixCombination
-{
-	GENERATED_BODY()
-
-	UPROPERTY(BlueprintReadOnly, Category = "Affix")
-	TSoftObjectPtr<UDataAsset_ElementBase> ElementAffix;
-
-	UPROPERTY(BlueprintReadOnly, Category = "Affix")
-	TSoftObjectPtr<UDataAsset_EffectBase> EffectAffix;
-
-	bool operator==(const FAffixCombination& Other) const
-	{
-		return ElementAffix == Other.ElementAffix && EffectAffix == Other.EffectAffix;
-	}
-};
-
-USTRUCT(BlueprintType)
 struct FRandomGambleEvent
 {
 	GENERATED_BODY()
