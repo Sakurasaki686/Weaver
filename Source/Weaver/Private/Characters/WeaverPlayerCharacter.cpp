@@ -105,17 +105,6 @@ void AWeaverPlayerCharacter::SetInteractionInfo_Implementation(AActor* InInterac
 	}
 }
 
-void AWeaverPlayerCharacter::ShowInteractionWarningFeedback_Implementation(const FText& InWarningFeedbackMessage)
-{
-	IPawnInteractionInterface::ShowInteractionWarningFeedback_Implementation(InWarningFeedbackMessage);
-	
-	if (PlayerUIComponent)
-	{
-		PlayerUIComponent->OnInteractionWarningFeedback.Broadcast(InWarningFeedbackMessage);
-	}
-}
-
-
 void AWeaverPlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	checkf(InputConfigDataAsset, TEXT("Forgot to assign a valid data asset as input config"));

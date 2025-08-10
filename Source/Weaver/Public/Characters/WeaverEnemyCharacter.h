@@ -71,9 +71,14 @@ protected:
 
 	UFUNCTION()
 	virtual void OnBodyCollisionBoxBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
-
+	
 	UFUNCTION(BlueprintNativeEvent, Category = "Weaver|Combat")
 	void OnThreatDetectionCollisionBoxBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+	virtual void OnHealthChanged(const FOnAttributeChangeData& Data) override;
+
+	UFUNCTION(BlueprintNativeEvent, Category = "Weaver|Combat")
+	void OnHealthHalfThreshold();
 
 private:
 	void InitEnemyStartUpData();
@@ -82,4 +87,7 @@ public:
 	FORCEINLINE UEnemyCombatComponent* GetEnemyCombatComponent() const { return EnemyCombatComponent; }
 	FORCEINLINE UBoxComponent* GetLeftHandCollisionBox() const { return LeftHandCollisionBox; }
 	FORCEINLINE UBoxComponent* GetRightHandCollisionBox() const { return RightHandCollisionBox; }
+
+private:
+	bool bHasTriggeredHalfHealthEvent = false;
 };

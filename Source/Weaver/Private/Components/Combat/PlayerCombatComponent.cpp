@@ -254,6 +254,8 @@ void UPlayerCombatComponent::AddAffix(UDataAsset_AffixBase* InAffixData)
 	}
 
 	GetOwner<AWeaverPlayerCharacter>()->GetPlayerUIComponent()->OnAddANewAffix.Broadcast(InAffixData);
+
+	CheckBossHintThreshold();
 }
 
 void UPlayerCombatComponent::AddAndSetTuner(UDataAsset_TunerBase* InTuner)
@@ -319,4 +321,35 @@ UDataAsset_AffixBase* UPlayerCombatComponent::SwitchToNextAffixInCurrentCategory
 	}
 
 	return AcquiredAffixes[NextIndex].Get();
+}
+
+void UPlayerCombatComponent::CheckBossHintThreshold()
+{
+	if (bBossHintTriggered)
+	{
+		return;
+	}
+
+	const int32 CurrentAffixCount = GetTotalAffixCount();
+    
+	if (CurrentAffixCount >= AffixThresholdForBossHint)
+	{
+		bBossHintTriggered = true;
+        
+		UE_LOG(LogTemp, Log, TEXT("Boss hint threshold reached! Current affix count: %d, Threshold: %d"), CurrentAffixCount, AffixThresholdForBossHint);
+        
+		OnBossHintThresholdReached.Broadcast();
+	}
+}
+
+int32 UPlayerCombatComponent::GetTotalAffixCount() const
+{
+	int32 TotalCount = 0;
+    
+	for (const auto& CategoryPair : CategorizedAffixes)
+	{
+		TotalCount += CategoryPair.Value.AcquiredAffixes.Num();
+	}
+    
+	return TotalCount;
 }

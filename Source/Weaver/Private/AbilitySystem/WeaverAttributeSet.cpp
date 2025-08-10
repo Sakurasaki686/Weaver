@@ -24,6 +24,18 @@ UWeaverAttributeSet::UWeaverAttributeSet()
 	InitAether(0.f);
 }
 
+void UWeaverAttributeSet::SendDeathEvent(const FGameplayEffectModCallbackData& Data)
+{
+	UAbilitySystemComponent* SourceASC = Data.EffectSpec.GetContext().GetOriginalInstigatorAbilitySystemComponent();
+	UAbilitySystemComponent* TargetASC = &Data.Target;
+
+	FGameplayEventData Payload;
+	Payload.Instigator = SourceASC ? SourceASC->GetAvatarActor() : nullptr;
+	Payload.Target = TargetASC ? TargetASC->GetAvatarActor() : nullptr;
+
+	TargetASC->HandleGameplayEvent(WeaverGameplayTags::Shared_Event_Death, &Payload);
+}
+
 void UWeaverAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data)
 {
 	if (!CachedPawnUIInterface.IsValid())
@@ -49,6 +61,9 @@ void UWeaverAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCall
 		if (GetCurrentHealth() <= 0.f)
 		{
 			UWeaverFunctionLibrary::AddGameplayTagToActorIfNone(Data.Target.GetAvatarActor(), WeaverGameplayTags::Shared_Status_Dead);
+
+			// 发送死亡事件
+			SendDeathEvent(Data);
 		}
 	}
 
@@ -76,6 +91,8 @@ void UWeaverAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCall
 		if (GetCurrentHealth() <= 0.f)
 		{
 			UWeaverFunctionLibrary::AddGameplayTagToActorIfNone(Data.Target.GetAvatarActor(), WeaverGameplayTags::Shared_Status_Dead);
+
+			SendDeathEvent(Data);
 		}
 	}
 

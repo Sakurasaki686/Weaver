@@ -8,6 +8,8 @@
 #include "Components/Combat/PawnCombatComponent.h"
 #include "PlayerCombatComponent.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnBossHintThresholdReached);
+
 class UDataAsset_TunerBase;
 class UDataAsset_AffixBase;
 class UDataAsset_EffectBase;
@@ -40,9 +42,18 @@ public:
 	virtual void OnHitTargetActor(AActor* HitActor) override;
 	virtual void OnWeaponPulledFromTargetActor(AActor* InteractedActor) override;
 
+	UPROPERTY(BlueprintAssignable, Category = "Weaver|Events")
+	FOnBossHintThresholdReached OnBossHintThresholdReached;
+
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Weaver|Spell Alchemist", meta = (AllowPrivateAccess = "true"))
 	TMap<FGameplayTag, FAffixCategory> CategorizedAffixes;
+	
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Weaver|Spell Alchemist", meta = (AllowPrivateAccess = "true"))
+	int32 AffixThresholdForBossHint = 8;
+
+	UPROPERTY(BlueprintReadOnly, Category = "Weaver|Boss Hint", meta = (AllowPrivateAccess = "true"))
+	bool bBossHintTriggered = false;
 
 public:
 	UFUNCTION(BlueprintPure, Category = "Weaver|Spell Alchemist")
@@ -80,4 +91,9 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Weaver|Spell Alchemist")
 	UDataAsset_AffixBase* SwitchToNextAffixInCurrentCategory(FGameplayTag InCategoryTag);
+
+private:
+	void CheckBossHintThreshold();
+
+	int32 GetTotalAffixCount() const;
 };

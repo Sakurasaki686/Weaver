@@ -36,7 +36,6 @@ public:
 
 	//~ Begin IPawnInteractionInterface Interface
 	virtual void SetInteractionInfo_Implementation(AActor* InInteractableTarget, const FText& InInteractionPrompt) override;
-	virtual void ShowInteractionWarningFeedback_Implementation(const FText& InWarningFeedbackMessage) override;
 	//~ End IPawnInteractionInterface Interface
 	
 protected:

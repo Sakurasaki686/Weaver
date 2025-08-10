@@ -10,6 +10,7 @@
 #include "WeaverTypes/WeaverEnumTypes.h"
 #include "WeaverFunctionLibrary.generated.h"
 
+struct FRandomGambleEvent;
 class UWeaverGameInstance;
 class UPawnCombatComponent;
 class UWeaverAbilitySystemComponent;
@@ -81,4 +82,7 @@ public:
 	
 	UFUNCTION(BlueprintPure, Category = "Weaver|FunctionLibrary")
 	static bool GetHitResultFromTargetData(const FGameplayAbilityTargetDataHandle& TargetData, int32 Index, FHitResult& OutHitResult);
+
+	UFUNCTION(BlueprintPure, Category = "Weaver|FunctionLibrary")
+	static bool SelectRandomGambleEvent(const TArray<FRandomGambleEvent>& EventPool, FGameplayTag& OutSelectedEventTag);
 };

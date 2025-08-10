@@ -18,7 +18,6 @@ UWeaverAbilitySystemComponent* UWeaverFunctionLibrary::NativeGetWeaverASCFromAct
 	check(InActor);
 
 	return CastChecked<UWeaverAbilitySystemComponent>(UAbilitySystemBlueprintLibrary::GetAbilitySystemComponent(InActor));
-
 }
 
 void UWeaverFunctionLibrary::AddGameplayTagToActorIfNone(AActor* InActor, FGameplayTag TagToAdd)
@@ -319,5 +318,46 @@ bool UWeaverFunctionLibrary::GetHitResultFromTargetData(const FGameplayAbilityTa
 		return true;
 	}
 
+	return false;
+}
+
+bool UWeaverFunctionLibrary::SelectRandomGambleEvent(const TArray<FRandomGambleEvent>& EventPool, FGameplayTag& OutSelectedEventTag)
+{
+	float TotalWeight = 0.0f;
+	for (const FRandomGambleEvent& Event : EventPool)
+	{
+		if (Event.Weight > 0.0f)
+		{
+			TotalWeight += Event.Weight;
+		}
+	}
+
+	if (TotalWeight <= 0.0f)
+	{
+		OutSelectedEventTag = FGameplayTag::EmptyTag;
+		return false;
+	}
+
+	const float RandomRoll = FMath::FRandRange(0.0f, TotalWeight);
+
+	float CurrentWeightSum = 0.0f;
+	for (const FRandomGambleEvent& Event : EventPool)
+	{
+		if (Event.Weight <= 0.0f)
+		{
+			continue;
+		}
+
+		CurrentWeightSum += Event.Weight;
+		
+		if (RandomRoll <= CurrentWeightSum)
+		{
+			OutSelectedEventTag = Event.EventTag;
+			return true;
+		}
+	}
+
+	OutSelectedEventTag = FGameplayTag::EmptyTag;
+	
 	return false;
 }

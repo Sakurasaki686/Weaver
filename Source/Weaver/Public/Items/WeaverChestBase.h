@@ -46,11 +46,17 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Configuration|Cost")
 	float AetherCostToOpen;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Configuration|SpecialReward")
+	float SpecialRewardChance = 0.1f;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Configuration|Interaction")
 	FText ChestInteractionHint;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Configuration|Interaction")
 	FText ChestInteractionWarningHint;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Configuration|Interaction")
+	FText ChestInteractionSpecialRewardHint;
 
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	TObjectPtr<UBoxComponent> InteractionBox;

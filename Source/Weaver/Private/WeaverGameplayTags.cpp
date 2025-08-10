@@ -43,6 +43,7 @@ namespace WeaverGameplayTags
 	UE_DEFINE_GAMEPLAY_TAG(Player_Ability_Interact, "Player.Ability.Interact");
 	UE_DEFINE_GAMEPLAY_TAG(Player_Ability_Interact_OpenChest, "Player.Ability.Interact.OpenChest");
 	UE_DEFINE_GAMEPLAY_TAG(Player_Ability_Interact_AwakenBoss, "Player.Ability.Interact.AwakenBoss");
+	UE_DEFINE_GAMEPLAY_TAG(Player_Ability_Interact_GambleWithMushroom, "Player.Ability.Interact.GambleWithMushroom");
 	
 	UE_DEFINE_GAMEPLAY_TAG(Player_Weapon_Rod, "Player.Weapon.Rod");
 	
@@ -51,6 +52,7 @@ namespace WeaverGameplayTags
 	UE_DEFINE_GAMEPLAY_TAG(Player_Event_ActivateHyperArmor, "Player.Event.ActivateHyperArmor");
 	UE_DEFINE_GAMEPLAY_TAG(Player_Event_ApplyHyperArmorGE, "Player.Event.ApplyHyperArmorGE");
 	UE_DEFINE_GAMEPLAY_TAG(Player_Event_Interact, "Player.Event.Interact");
+	UE_DEFINE_GAMEPLAY_TAG(Player_Event_Win, "Player.Event.Win");
 	
 	UE_DEFINE_GAMEPLAY_TAG(Player_State_Invincible, "Player.State.Invincible");
 	UE_DEFINE_GAMEPLAY_TAG(Player_State_InAir, "Player.State.InAir");
@@ -62,6 +64,8 @@ namespace WeaverGameplayTags
 	UE_DEFINE_GAMEPLAY_TAG(Player_State_HyperArmor_Activating, "Player.State.HyperArmor.Activating");
 	UE_DEFINE_GAMEPLAY_TAG(Player_State_ToggleEquipping, "Player.State.ToggleEquipping");
 	UE_DEFINE_GAMEPLAY_TAG(Player_State_EquipingAffixes, "Player.State.EquipingAffixes");
+	UE_DEFINE_GAMEPLAY_TAG(Player_State_CanSculpt, "Player.State.CanSculpt");
+	UE_DEFINE_GAMEPLAY_TAG(Player_State_InWinScreen, "Player.State.InWinScreen");
 	
 	UE_DEFINE_GAMEPLAY_TAG(Player_SculptMode_Build, "Player.SculptMode.Build");
 	UE_DEFINE_GAMEPLAY_TAG(Player_SculptMode_Dig, "Player.SculptMode.Dig");
@@ -95,6 +99,7 @@ namespace WeaverGameplayTags
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Ability_Death, "Shared.Ability.Death");
 	
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Event_HitReact, "Shared.Event.HitReact");
+	UE_DEFINE_GAMEPLAY_TAG(Shared_Event_Death, "Shared.Event.Death");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Event_ProjectileHitTarget, "Shared.Event.ProjectileHitTarget");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Event_InterruptCurrentMontage, "Shared.Event.InterruptCurrentMontage");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Event_SpawnProjectile, "Shared.Event.SpawnProjectile");
@@ -121,6 +126,7 @@ namespace WeaverGameplayTags
 	UE_DEFINE_GAMEPLAY_TAG(Shared_SetByCaller_BaseDamage, "Shared.SetByCaller.BaseDamage");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_SetByCaller_AttackMultiplier, "Shared.SetByCaller.AttackMultiplier");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_SetByCaller_AetherChangeAmount, "Shared.SetByCaller.AetherChangeAmount");
+	UE_DEFINE_GAMEPLAY_TAG(Shared_SetByCaller_LifestealAmount, "Shared.SetByCaller.LifestealAmount");
 	
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Tuner, "Shared.Projectile.Affix.Tuner");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Tuner_Focus, "Shared.Projectile.Affix.Tuner.Focus");
@@ -145,6 +151,13 @@ namespace WeaverGameplayTags
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Effect_Ricochet, "Shared.Projectile.Affix.Effect.Ricochet");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Effect_Lifesteal, "Shared.Projectile.Affix.Effect.Lifesteal");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Projectile_Affix_Effect_DelayedDetonation, "Shared.Projectile.Affix.Effect.DelayedDetonation");
+
+	// Interactable
+	UE_DEFINE_GAMEPLAY_TAG(Interactable_Mushroom_Event_Punishment, "Interactable.Mushroom.Event.Punishment");
+	UE_DEFINE_GAMEPLAY_TAG(Interactable_Mushroom_Event_Reward, "Interactable.Mushroom.Event.Reward");
+	UE_DEFINE_GAMEPLAY_TAG(Interactable_Mushroom_Event_SpecialReward, "Interactable.Mushroom.Event.SpecialReward");
+	
+	UE_DEFINE_GAMEPLAY_TAG(Interactable_Shrine_Event_Disappear, "Interactable.Shrine.Event.Disappear");
 
 	/** Game Data Tags **/
 	UE_DEFINE_GAMEPLAY_TAG(GameData_Level_Forest, "GameData.Level.Forest");

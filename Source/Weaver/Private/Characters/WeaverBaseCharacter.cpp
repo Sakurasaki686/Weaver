@@ -42,7 +42,9 @@ void AWeaverBaseCharacter::BeginPlay()
 	WeaverAbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(WeaverAttributeSet->GetMovementSpeedMultiplierAttribute()).AddUObject(this, &ThisClass::OnMovementAttributesChanged);
 	WeaverAbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(WeaverAttributeSet->GetMaxRunSpeedAttribute()).AddUObject(this, &ThisClass::OnMovementAttributesChanged);
 	WeaverAbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(WeaverAttributeSet->GetMaxWalkSpeedAttribute()).AddUObject(this, &ThisClass::OnMovementAttributesChanged);
-	
+
+	WeaverAbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(WeaverAttributeSet->GetCurrentHealthAttribute()).AddUObject(this, &ThisClass::OnHealthChanged);
+
 	GetCharacterMovement()->MaxWalkSpeed = WeaverAttributeSet->GetMaxRunSpeed() * WeaverAttributeSet->GetMovementSpeedMultiplier();
 	GetMesh()->GlobalAnimRateScale = WeaverAttributeSet->GetMovementSpeedMultiplier();
 }
@@ -88,6 +90,10 @@ void AWeaverBaseCharacter::OnMovementModeChanged(EMovementMode PrevMovementMode,
 	{
 		WeaverAbilitySystemComponent->SetTagMapCount(WeaverGameplayTags::Player_State_InAir, 0);
 	}
+}
+
+void AWeaverBaseCharacter::OnHealthChanged(const FOnAttributeChangeData& Data)
+{
 }
 
 void AWeaverBaseCharacter::OnMovementAttributesChanged(const FOnAttributeChangeData& Data)

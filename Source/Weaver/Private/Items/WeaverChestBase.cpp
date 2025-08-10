@@ -9,6 +9,7 @@
 #include "Components/BoxComponent.h"
 #include "Components/WeaverRewardComponent.h"
 #include "Kismet/GameplayStatics.h"
+#include "Kismet/KismetMathLibrary.h"
 
 AWeaverChestBase::AWeaverChestBase()
 {
@@ -56,7 +57,7 @@ void AWeaverChestBase::Interact_Implementation(AActor* InInstigator)
 	{
 		if (!bHasOpened)
 		{
-			Execute_ShowInteractionWarningFeedback(InInstigator, ChestInteractionWarningHint);
+			Execute_ShowInteractionHintFeedback(InInstigator, ChestInteractionWarningHint);
 		}
 	}
 }

@@ -2,9 +2,8 @@
 
 
 #include "Components/WeaverRewardComponent.h"
+#include "DataAssets/Affixes/DataAsset_AffixBase.h"
 
-#include "Blueprint/UserWidget.h"
-#include "Widgets/WeaverWidgetBase.h"
 
 UWeaverRewardComponent::UWeaverRewardComponent()
 {
@@ -24,20 +23,28 @@ void UWeaverRewardComponent::StartRewardSelection()
 
 TArray<UDataAsset_AffixBase*> UWeaverRewardComponent::GetRandomUniqueAffixes(int32 Count)
 {
-	// 从池子中随机不重复抽取 N 个 Affix
 	TArray<UDataAsset_AffixBase*> Result;
-	TArray<UDataAsset_AffixBase*> TempPool = AllAffixesPool;
-	
+    
+	TArray<TSoftObjectPtr<UDataAsset_AffixBase>> TempPool = AllAffixesPool;
+    
 	Count = FMath::Min(Count, TempPool.Num());
 	for (int32 i = 0; i < Count; ++i)
 	{
 		if (TempPool.Num() == 0) break;
-		
+        
 		int32 RandomIndex = FMath::RandRange(0, TempPool.Num() - 1);
-		Result.Add(TempPool[RandomIndex]);
-		
+        
+		TSoftObjectPtr<UDataAsset_AffixBase> SelectedSoftPtr = TempPool[RandomIndex];
+        
+		UDataAsset_AffixBase* LoadedAffix = SelectedSoftPtr.LoadSynchronous();
+
+		if (LoadedAffix)
+		{
+			Result.Add(LoadedAffix);
+		}
+        
 		TempPool.RemoveAt(RandomIndex);
 	}
-	
+    
 	return Result;
 }

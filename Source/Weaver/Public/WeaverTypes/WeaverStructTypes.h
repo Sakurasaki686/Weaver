@@ -110,3 +110,15 @@ struct FAffixCombination
 		return ElementAffix == Other.ElementAffix && EffectAffix == Other.EffectAffix;
 	}
 };
+
+USTRUCT(BlueprintType)
+struct FRandomGambleEvent
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	FGameplayTag EventTag;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	float Weight;
+};

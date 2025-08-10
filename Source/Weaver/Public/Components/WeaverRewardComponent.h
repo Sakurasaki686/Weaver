@@ -32,5 +32,5 @@ public:
 
 protected:
 	UPROPERTY(EditDefaultsOnly, Category = "Affix Pool")
-	TArray<TObjectPtr<UDataAsset_AffixBase>> AllAffixesPool;
+	TArray<TSoftObjectPtr<UDataAsset_AffixBase>> AllAffixesPool;
 };

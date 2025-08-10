@@ -44,6 +44,7 @@ namespace WeaverGameplayTags
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Ability_Interact);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Ability_Interact_OpenChest);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Ability_Interact_AwakenBoss);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Ability_Interact_GambleWithMushroom);
 	
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Weapon_Rod);
 
@@ -52,6 +53,7 @@ namespace WeaverGameplayTags
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Event_ActivateHyperArmor);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Event_ApplyHyperArmorGE);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Event_Interact);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Event_Win);
 	
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_State_Invincible);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_State_InAir);
@@ -63,6 +65,8 @@ namespace WeaverGameplayTags
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_State_HyperArmor_Activating);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_State_ToggleEquipping);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_State_EquipingAffixes);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_State_CanSculpt);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_State_InWinScreen);
 	
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_SculptMode_Build);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_SculptMode_Dig);
@@ -96,6 +100,7 @@ namespace WeaverGameplayTags
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Ability_Death);
 
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Event_HitReact);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Event_Death);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Event_ProjectileHitTarget);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Event_InterruptCurrentMontage);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Event_SpawnProjectile);
@@ -123,6 +128,7 @@ namespace WeaverGameplayTags
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_SetByCaller_BaseDamage);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_SetByCaller_AttackMultiplier);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_SetByCaller_AetherChangeAmount);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_SetByCaller_LifestealAmount);
 	
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Tuner);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Tuner_Focus);
@@ -147,6 +153,13 @@ namespace WeaverGameplayTags
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Effect_Ricochet);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Effect_Lifesteal);
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Projectile_Affix_Effect_DelayedDetonation);
+
+	// Interactable
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Interactable_Mushroom_Event_Punishment);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Interactable_Mushroom_Event_Reward);
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Interactable_Mushroom_Event_SpecialReward);
+	
+	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Interactable_Shrine_Event_Disappear);
 
 	/** Game Data Tags **/
 	WEAVER_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(GameData_Level_Forest);

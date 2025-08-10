@@ -24,7 +24,8 @@ class WEAVER_API UWeaverAttributeSet : public UAttributeSet
 
 public:
 	UWeaverAttributeSet();
-	
+	void SendDeathEvent(const FGameplayEffectModCallbackData& Data);
+
 	virtual void PostGameplayEffectExecute(const FGameplayEffectModCallbackData &Data) override;
 
 	UPROPERTY(BlueprintReadOnly, Category = "Health")

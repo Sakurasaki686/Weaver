@@ -53,6 +53,8 @@ protected:
 	virtual void OnMovementModeChanged(EMovementMode PrevMovementMode, uint8 PreviousCustomMode = 0) override;
 	//~ End ACharacter Interface
 
+	virtual void OnHealthChanged(const FOnAttributeChangeData& Data);
+	
 	void OnMovementAttributesChanged(const FOnAttributeChangeData& Data);
 	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "AbilitySystem")

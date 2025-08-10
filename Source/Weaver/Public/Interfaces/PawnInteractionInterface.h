@@ -34,5 +34,5 @@ public:
 	void SetInteractionInfo(AActor* InInteractableTarget, const FText& InInteractionPrompt);
 
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Interaction")
-	void ShowInteractionWarningFeedback(const FText& InWarningFeedbackMessage);
+	void ShowInteractionHintFeedback(const FText& InWarningFeedbackMessage);
 };
