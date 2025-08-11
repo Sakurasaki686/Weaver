@@ -57,6 +57,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Affix Pool")
 	bool GetRandomAffixCombination(FAffixCombination& OutCombination);
 
+	UFUNCTION(BlueprintCallable, Category = "Affix Pool")
+	void ClearAffixPool();
+
 protected:
 	UPROPERTY()
 	TSet<FAffixCombination> AffixPool;

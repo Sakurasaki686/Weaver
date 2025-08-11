@@ -33,3 +33,8 @@ bool UAffixPoolSubsystem::GetRandomAffixCombination(FAffixCombination& OutCombin
 
 	return true;
 }
+
+void UAffixPoolSubsystem::ClearAffixPool()
+{
+	AffixPool.Empty();
+}
