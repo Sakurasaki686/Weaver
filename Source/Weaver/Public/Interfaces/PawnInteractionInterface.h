@@ -6,7 +6,6 @@
 #include "UObject/Interface.h"
 #include "PawnInteractionInterface.generated.h"
 
-// This class does not need to be modified.
 UINTERFACE(MinimalAPI)
 class UPawnInteractionInterface : public UInterface
 {
